@@ -13,7 +13,7 @@ export default async function Home() {
   }
 
   // wait 10s
-  await new Promise((resolve) => setTimeout(resolve, 10000));
+  await new Promise((resolve) => setTimeout(resolve, 10000000));
 
   return (
     <HydrateClient>
