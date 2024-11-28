@@ -1,5 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// This is your Prisma schema file: https://pris.ly/d/prisma-schema
+// Migrate docs: https://www.prisma.io/docs/orm/prisma-migrate/getting-started
 
 generator client {
     provider = "prisma-client-js"
