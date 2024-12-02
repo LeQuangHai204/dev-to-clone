@@ -1,30 +1,37 @@
 import Image from '~/components/wrappers/image';
-import SearchBar from '~/components/searchbar';
+import SearchBar from '~/components/templates/searchbar';
 
-import { BellIcon } from '~/components/icons/tooltip';
+import { BellIcon } from '~/components/icons/interactive';
 import { Button } from '~/components/ui/button';
+import PopoverWrapper from '~/components/wrappers/popover';
 
 const Header = () => {
     return (
         <div className='bg-header-background'>
-            <div className='sticky top-0 z-50 mx-auto flex h-header w-full max-w-display justify-between px-4 py-2'>
-                <div className='flex flex-1'>
+            <div className='sticky top-0 z-50 mx-auto flex h-header w-full max-w-display justify-between px-6 py-2'>
+                <div className='flex gap-x-4'>
                     <Image
-                        className='mx-4 block'
-                        width='50px'
+                        className='h-auto w-[50px]'
                         src='https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png'
                         alt='DEV Community'
                     />
-                    <SearchBar className='max-w-2xl' placeholder='Search ...' />
+                    <SearchBar placeholder='Search ...' />
                 </div>
-                <div className='flex'>
+                <div className='mr-8 flex gap-x-4'>
                     <Button variant='primary' className='h-full'>
                         Create Post
                     </Button>
-                    <div className='flex h-full items-center justify-center bg-primary text-primary-foreground shadow hover:bg-primary/90'>
-                        <BellIcon className='' />
-                    </div>
-                    <div className='m-1 flex aspect-square size-auto h-full items-center justify-center rounded-full bg-orange-500 text-white'>
+
+                    <PopoverWrapper
+                        trigger={
+                            <div className='flex aspect-square h-full items-center justify-center rounded-md bg-primary text-primary-foreground shadow hover:bg-primary/90'>
+                                <BellIcon />
+                            </div>
+                        }
+                        content='HELLO'
+                    />
+
+                    <div className='flex aspect-square h-full items-center justify-center rounded-full bg-orange-500 p-1 text-xl'>
                         L
                     </div>
                 </div>
@@ -34,3 +41,4 @@ const Header = () => {
 };
 
 export default Header;
+// items-center justify-center rounded-full bg-orange-500 p-1 text-white

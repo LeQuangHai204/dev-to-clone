@@ -17,7 +17,7 @@ import {
     MicrophoneIcon,
     PlusPlusIcon,
     ThumbsUpIcon,
-} from '~/components/icons/navigate';
+} from '~/components/icons/navigation';
 
 import { NoImageIcon } from '~/components/icons/fallback';
 

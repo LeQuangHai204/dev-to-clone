@@ -90,7 +90,7 @@
 /* Custom parameter configuration */
 @layer base {
     :root {
-        --display-width: 1380px;
+        --display-width: 80rem;
     }
     .dark {
         --background: 0 0% 0%;

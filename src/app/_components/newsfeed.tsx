@@ -1,5 +1,7 @@
+import Article from '~/components/templates/article';
+
 const NewsFeed = ({}: {}) => {
-    return <div className="bg-yellow-500 grow">News</div>;
+    return <Article className='grow bg-yellow-500'>News</Article>;
 };
 
 export default NewsFeed;
