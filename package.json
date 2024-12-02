@@ -25,6 +25,7 @@
         "@auth/prisma-adapter": "^2.7.2",
         "@prisma/client": "^5.14.0",
         "@radix-ui/react-dialog": "^1.1.2",
+        "@radix-ui/react-popover": "^1.1.2",
         "@radix-ui/react-separator": "^1.1.0",
         "@radix-ui/react-slot": "^1.1.0",
         "@radix-ui/react-tooltip": "^1.1.4",
