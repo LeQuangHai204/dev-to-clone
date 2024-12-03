@@ -1,17 +1,33 @@
 import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
-import { SearchIcon } from '~/components/icons/navigation';
 
-export default function SearchBar({ className, placeholder }: { className?: string; placeholder?: string }) {
+export default function SearchBar({
+    className,
+    placeholder = 'Search...',
+    areaLabel,
+    LeftIcon,
+    RightIcon,
+}: {
+    className?: string;
+    placeholder?: string;
+    areaLabel?: string;
+    LeftIcon?: React.ComponentType;
+    RightIcon?: React.ComponentType;
+}) {
     return (
-        <div className={cn('flex grow rounded-md bg-background', className)}>
-            <Button className='h-full px-5 hover:bg-purplyblue-400/75' variant='ghost' size='icon'>
-                <SearchIcon />
-            </Button>
-            <Input className='size-full grow' variant='square' type='text' placeholder={placeholder} />
+        <div className={cn('flex rounded-md bg-background focus-within:ring-0 focus-within:ring-offset-1', className)}>
+            {LeftIcon ? (
+                <Button className='h-full hover:bg-purplyblue-400/75' variant='ghost' size='icon'>
+                    <LeftIcon />
+                </Button>
+            ) : null}
+            <Input className='px-3' variant='square' type='text' placeholder={placeholder} area-label={areaLabel} />
+            {RightIcon ? (
+                <Button className='h-full hover:bg-purplyblue-400/75' variant='ghost' size='icon'>
+                    <RightIcon />
+                </Button>
+            ) : null}
         </div>
     );
 }
-
-/*  focus-visible:ring-1 focus-visible:ring-ring */

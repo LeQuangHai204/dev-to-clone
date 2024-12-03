@@ -1,10 +1,12 @@
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 
-const PopoverWrapper = ({ content, trigger }: { content: React.ReactNode; trigger: React.ReactNode }) => {
+const PopoverWrapper = ({ content, children }: { content: React.ReactNode; children: React.ReactNode }) => {
     return (
         <Popover>
-            <PopoverTrigger>{trigger}</PopoverTrigger>
+            <PopoverTrigger>{children}</PopoverTrigger>
             <PopoverContent>{content}</PopoverContent>
         </Popover>
     );
 };
+
+export default PopoverWrapper;

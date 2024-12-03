@@ -1,5 +1,6 @@
 const colors = {
     background: 'hsl(var(--background))',
+    'secondary-background': 'hsl(var(--secondary-background))',
     foreground: 'hsl(var(--foreground))',
     purplyblue: {
         200: 'hsl(229.66deg 93.55% 81.76%)',
@@ -46,15 +47,12 @@ const colors = {
         '5': 'hsl(var(--chart-5))',
     },
     sidebar: {
-        DEFAULT: 'hsl(var(--sidebar-background))',
-        foreground: 'hsl(var(--sidebar-foreground))',
+        DEFAULT: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         accent: 'hsl(var(--sidebar-accent))',
         'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
         border: 'hsl(var(--sidebar-border))',
         ring: 'hsl(var(--sidebar-ring))',
-    },
-    header: {
-        background: 'hsl(var(--header-background))',
     },
 };
 

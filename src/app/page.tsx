@@ -1,12 +1,11 @@
 import { auth } from '~/server/auth';
-import { api, HydrateClient } from '~/trpc/server';
+import { api } from '~/trpc/server';
 
-import { SidebarProvider } from '~/components/ui/sidebar';
+import SidebarWrapper from '~/components/wrappers/sidebar';
 
 import Header from './_components/header';
-import LeftSidebar from './_components/left-sidebar';
-import RightSidebar from './_components/right-sidebar';
-import NewsFeed from './_components/newsfeed';
+import Content from './_components/content';
+import { leftSidebarData, rightSidebarData } from './constants';
 
 export default async function Home() {
     const hello = await api.post.hello({ text: 'from tRPC' });
@@ -19,11 +18,17 @@ export default async function Home() {
     return (
         <>
             <Header />
-            <SidebarProvider className='mx-auto flex w-full max-w-display p-4'>
-                <LeftSidebar />
-                <NewsFeed />
-                <RightSidebar />
-            </SidebarProvider>
+            <div className='mx-auto flex w-full max-w-display gap-x-3 p-4'>
+                <SidebarWrapper data={leftSidebarData} />
+                <Content />
+                <SidebarWrapper
+                    className='basis-[30%]'
+                    data={rightSidebarData}
+                    groupVariant='round'
+                    buttonSize='fit'
+                    type='article'
+                />
+            </div>
         </>
     );
 }

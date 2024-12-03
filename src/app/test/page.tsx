@@ -1,66 +1,184 @@
-import Link from "next/link";
+import {
+    Sidebar,
+    SidebarContent,
+    SidebarGroup,
+    SidebarGroupLabel,
+    SidebarGroupContent,
+    SidebarMenu,
+    SidebarMenuItem,
+    SidebarMenuButton,
+    SidebarProvider,
+    SidebarHeader,
+    SidebarRail,
+    SidebarInset,
+    SidebarTrigger,
+} from '~/components/ui/sidebar';
 
-import { LatestPost } from "~/app/test/post";
-import { auth } from "~/server/auth";
-import { api, HydrateClient } from "~/trpc/server";
+const data = {
+    versions: ['1.0.1', '1.1.0-alpha', '2.0.0-beta1'],
+    navMain: [
+        {
+            title: 'Getting Started',
+            url: '#',
+            items: [
+                {
+                    title: 'Installation',
+                    url: '#',
+                },
+                {
+                    title: 'Project Structure',
+                    url: '#',
+                },
+            ],
+        },
+        {
+            title: 'Building Your Application',
+            url: '#',
+            items: [
+                {
+                    title: 'Routing',
+                    url: '#',
+                },
+                {
+                    title: 'Data Fetching',
+                    url: '#',
+                    isActive: true,
+                },
+                {
+                    title: 'Rendering',
+                    url: '#',
+                },
+                {
+                    title: 'Caching',
+                    url: '#',
+                },
+                {
+                    title: 'Styling',
+                    url: '#',
+                },
+                {
+                    title: 'Optimizing',
+                    url: '#',
+                },
+                {
+                    title: 'Configuring',
+                    url: '#',
+                },
+                {
+                    title: 'Testing',
+                    url: '#',
+                },
+                {
+                    title: 'Authentication',
+                    url: '#',
+                },
+                {
+                    title: 'Deploying',
+                    url: '#',
+                },
+                {
+                    title: 'Upgrading',
+                    url: '#',
+                },
+                {
+                    title: 'Examples',
+                    url: '#',
+                },
+            ],
+        },
+        {
+            title: 'API Reference',
+            url: '#',
+            items: [
+                {
+                    title: 'Components',
+                    url: '#',
+                },
+                {
+                    title: 'File Conventions',
+                    url: '#',
+                },
+                {
+                    title: 'Functions',
+                    url: '#',
+                },
+                {
+                    title: 'next.config.js Options',
+                    url: '#',
+                },
+                {
+                    title: 'CLI',
+                    url: '#',
+                },
+                {
+                    title: 'Edge Runtime',
+                    url: '#',
+                },
+            ],
+        },
+        {
+            title: 'Architecture',
+            url: '#',
+            items: [
+                {
+                    title: 'Accessibility',
+                    url: '#',
+                },
+                {
+                    title: 'Fast Refresh',
+                    url: '#',
+                },
+                {
+                    title: 'Next.js Compiler',
+                    url: '#',
+                },
+                {
+                    title: 'Supported Browsers',
+                    url: '#',
+                },
+                {
+                    title: 'Turbopack',
+                    url: '#',
+                },
+            ],
+        },
+    ],
+};
 
-export default async function Home() {
-    const hello = await api.post.hello({ text: "from tRPC" });
-    const session = await auth();
-
-    if (session?.user) {
-        void api.post.getLatest.prefetch();
-    }
-
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     return (
-        <HydrateClient>
-            <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-                <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-                    <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-                        Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-                    </h1>
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-                        <Link
-                            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-                            href="https://create.t3.gg/en/usage/first-steps"
-                            target="_blank"
-                        >
-                            <h3 className="text-2xl font-bold">First Steps →</h3>
-                            <div className="text-lg">
-                                Just the basics - Everything you need to know to set up your database and
-                                authentication.
-                            </div>
-                        </Link>
-                        <Link
-                            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-                            href="https://create.t3.gg/en/introduction"
-                            target="_blank"
-                        >
-                            <h3 className="text-2xl font-bold">Documentation →</h3>
-                            <div className="text-lg">
-                                Learn more about Create T3 App, the libraries it uses, and how to deploy it.
-                            </div>
-                        </Link>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                        <p className="text-2xl text-white">{hello ? hello.greeting : "Loading tRPC query..."}</p>
+        <Sidebar variant='inset' {...props}>
+            <SidebarContent>
+                {/* We create a SidebarGroup for each parent. */}
+                {data.navMain.map((item) => (
+                    <SidebarGroup key={item.title}>
+                        <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
+                        <SidebarGroupContent>
+                            <SidebarMenu>
+                                {item.items.map((item) => (
+                                    <SidebarMenuItem key={item.title}>
+                                        <SidebarMenuButton asChild isActive={item.isActive}>
+                                            <a href={item.url}>{item.title}</a>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                ))}
+                            </SidebarMenu>
+                        </SidebarGroupContent>
+                    </SidebarGroup>
+                ))}
+            </SidebarContent>
+            <SidebarRail />
+        </Sidebar>
+    );
+}
 
-                        <div className="flex flex-col items-center justify-center gap-4">
-                            <p className="text-center text-2xl text-white">
-                                {session && <span>Logged in as {session.user?.name}</span>}
-                            </p>
-                            <Link
-                                href={session ? "/api/auth/signout" : "/api/auth/signin"}
-                                className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-                            >
-                                {session ? "Sign out" : "Sign in"}
-                            </Link>
-                        </div>
-                    </div>
-
-                    {session?.user && <LatestPost />}
-                </div>
-            </main>
-        </HydrateClient>
+export default function Page() {
+    return (
+        <div className='flex'>
+            <div className='h-11 w-11 bg-red-500'></div>
+            <SidebarProvider>
+                <AppSidebar />
+            </SidebarProvider>
+        </div>
     );
 }
