@@ -9,7 +9,21 @@ import { MeatballsMenuIcon } from '~/components/icons/popover';
 
 import { SearchIcon } from 'lucide-react';
 
-const Content = ({ className, data }: { className?: string; data: any[] }) => {
+const Content = ({
+    className,
+    data,
+}: {
+    className?: string;
+    data: {
+        title: string;
+        comments_count: number;
+        reactions_count: number;
+        top_comments: {
+            name: string;
+            profile_image?: string;
+        }[];
+    }[];
+}) => {
     const [activeButton, setActiveButton] = useState<'discover' | 'following'>('discover');
 
     return (

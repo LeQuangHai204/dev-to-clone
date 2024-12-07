@@ -7,9 +7,7 @@ import {
     SidebarMenu,
     SidebarMenuItem,
     SidebarMenuButton,
-    SidebarProvider,
 } from '~/components/ui/sidebar';
-import { cn } from '~/lib/utils';
 
 const SidebarWrapper = ({
     className,
@@ -18,7 +16,6 @@ const SidebarWrapper = ({
     groupVariant = 'default',
     buttonVariant = 'primary',
     buttonSize = 'xl',
-    type = 'navigation',
     ...props
 }: {
     className?: string;
@@ -28,13 +25,12 @@ const SidebarWrapper = ({
         items: {
             title?: string;
             url?: string;
-            [key: string]: any;
+            icon?: React.ComponentType;
         }[];
     }[];
     groupVariant?: 'default' | 'round';
     buttonVariant?: 'primary' | 'default' | 'outline' | null | undefined;
     buttonSize?: 'default' | 'sm' | 'lg' | 'xl' | 'fit' | null | undefined;
-    type?: 'navigation' | 'article';
 }) => {
     return (
         <Sidebar className={className} side={side} {...props}>

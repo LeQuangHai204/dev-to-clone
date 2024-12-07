@@ -1,5 +1,5 @@
-import { auth } from '~/server/auth';
-import { api } from '~/trpc/server';
+// import { auth } from '~/server/auth';
+// import { api } from '~/trpc/server';
 
 import SidebarWrapper from '~/components/wrappers/sidebar';
 
@@ -26,7 +26,6 @@ const Home = async () => {
                     data={rightSidebarData}
                     groupVariant='round'
                     buttonSize='fit'
-                    type='article'
                 />
             </div>
         </main>

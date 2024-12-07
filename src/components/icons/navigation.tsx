@@ -1,5 +1,3 @@
-import { cn } from '~/lib/utils';
-
 // https://stackoverflow.com/questions/19484707/how-can-i-make-an-svg-scale-with-its-parent-container
 
 const HomeIcon = ({

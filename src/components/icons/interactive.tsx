@@ -31,6 +31,7 @@ const SearchIcon = ({ className, size = '1.5rem' }: { className?: string; size?:
 
 const BookmarkIcon = ({ className, size = '1.5rem' }: { className?: string; size?: string }) => (
     <svg
+        className={className}
         width={size}
         height={size}
         xmlns='http://www.w3.org/2000/svg'

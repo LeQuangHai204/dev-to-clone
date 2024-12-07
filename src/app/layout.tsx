@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
-export default ({ children }: Readonly<{ children: React.ReactNode }>) => (
+const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
     <html lang='en' className={`${GeistSans.variable}`}>
         <body>
             <TRPCReactProvider>
@@ -24,3 +24,5 @@ export default ({ children }: Readonly<{ children: React.ReactNode }>) => (
         </body>
     </html>
 );
+
+export default RootLayout;
