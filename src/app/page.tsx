@@ -8,12 +8,12 @@ import Content from './_components/content';
 import { leftSidebarData, rightSidebarData, tempNews } from './constants';
 
 const Home = async () => {
-    const hello = await api.post.hello({ text: 'from tRPC' });
-    const session = await auth();
+    // const hello = await api.post.hello({ text: 'from tRPC' });
+    // const session = await auth();
 
-    if (session?.user) {
-        void api.post.getLatest.prefetch();
-    }
+    // if (session?.user) {
+    //     void api.post.getLatest.prefetch();
+    // }
 
     return (
         <main className='flex w-full flex-col'>

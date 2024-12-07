@@ -7,7 +7,12 @@ import './src/env.js';
 /** @type {import("next").NextConfig} */
 const config = {
     images: {
-        domains: ['media2.dev.to'], // Add this line to allow external images from media2.dev.to
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**',
+            },
+        ],
     },
 };
 

@@ -6,7 +6,6 @@ import PopoverWrapper from '~/components/wrappers/popover';
 import { Button } from '~/components/ui/button';
 import { BellIcon, SearchIcon } from '~/components/icons/interactive';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Skeleton } from '~/components/ui/skeleton';
 
 const Header = () => {
     return (
