@@ -1,9 +1,12 @@
+import { Children } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 
-const PopoverWrapper = ({ content, children }: { content: React.ReactNode; children: React.ReactNode }) => {
+const PopoverWrapper = ({ children }: { children: [React.ReactNode, React.ReactNode] }) => {
+    const [trigger, content] = Children.toArray(children);
+
     return (
         <Popover>
-            <PopoverTrigger>{children}</PopoverTrigger>
+            <PopoverTrigger>{trigger}</PopoverTrigger>
             <PopoverContent>{content}</PopoverContent>
         </Popover>
     );

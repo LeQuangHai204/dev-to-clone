@@ -9,7 +9,9 @@ export default {
     theme: {
         extend: {
             colors,
-
+            textColor: {
+                DEFAULT: 'hsl(var(--foreground))', // Define your global default color
+            },
             fontFamily: {
                 init: ['var(--font-geist-sans)', ...fontFamily.sans],
                 sans: [

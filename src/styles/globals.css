@@ -94,11 +94,14 @@
 
         /* placeholder - only dark mode supported */
         --secondary-background: 0 0% 83%;
+        --nested-background: 0 0% 92%;
     }
     .dark {
         --background: 0 0% 0%;
         --foreground: 0 0% 83%;
+        --secondary-foreground: 0 0% 64%;
 
         --secondary-background: 0 0% 9%;
+        --nested-background: 0 0% 15%;
     }
 }

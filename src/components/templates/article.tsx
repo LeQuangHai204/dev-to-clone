@@ -1,5 +1,122 @@
-const Article = ({ className, children, ...props }: { className?: string; children?: string }) => {
-    return <div className={className}>{children}</div>;
+import Link from 'next/link';
+
+import { Button } from '~/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
+import { Card, CardHeader, CardContent, CardFooter } from '~/components/ui/card';
+import { BookmarkIcon } from '~/components/icons/interactive';
+import PopoverWrapper from '~/components/wrappers/popover';
+
+const Article = ({
+    className,
+    data,
+    ...props
+}: {
+    className?: string;
+    data: {
+        title: string;
+        comments_count: number;
+        reactions_count: number;
+        top_comments: {
+            name: string;
+            profile_image?: string;
+        }[];
+    };
+}) => {
+    return (
+        <Card className='w-full cursor-pointer bg-secondary-background'>
+            <CardHeader>
+                <div className='flex items-center gap-2'>
+                    <Avatar className='h-8 w-8'>
+                        <AvatarImage src='/placeholder.svg' />
+                        <AvatarFallback>IK</AvatarFallback>
+                    </Avatar>
+                    <div>
+                        <div className='flex items-center space-x-1'>
+                            <PopoverWrapper>
+                                <span className='text-sm font-normal text-foreground'>Ismail Kamil</span>
+                                <span>Hello</span>
+                            </PopoverWrapper>
+                            <div className='text-sm text-secondary-foreground'>for</div>
+                            <Link className='text-sm font-normal text-foreground' href='#'>
+                                Apidog
+                            </Link>
+                        </div>
+                        <p className='text-xs text-secondary-foreground'>Dec 5 (1 day ago)</p>
+                    </div>
+                </div>
+            </CardHeader>
+            <CardContent className='space-y-2'>
+                <h1 className='pl-11 text-2xl font-bold hover:text-purplyblue-200'>{data.title}</h1>
+                <div className='flex flex-wrap pl-10'>
+                    <Button className='text-foreground hover:text-white' variant='ghost' size='sm'>
+                        #webdev
+                    </Button>
+                    <Button className='text-foreground hover:text-white' variant='ghost' size='sm'>
+                        #tutorial
+                    </Button>
+                    <Button className='text-foreground hover:text-white' variant='ghost' size='sm'>
+                        #frontend
+                    </Button>
+                </div>
+                {/* Reactions */}
+                <div className='flex items-center justify-between pl-10'>
+                    <div className='space-x-2'>
+                        <Button
+                            variant='ghost'
+                            className='hover:bg-nested-background h-10 text-foreground hover:text-white'
+                            size='sm'
+                        >
+                            {data.reactions_count} Reactions
+                        </Button>
+                        <Button
+                            variant='ghost'
+                            className='hover:bg-nested-background h-10 text-foreground hover:text-white'
+                            size='sm'
+                        >
+                            {data.comments_count} Comments
+                        </Button>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <span className='text-xs text-secondary-foreground'>5 min read</span>
+                        <Button
+                            variant='ghost'
+                            size='icon'
+                            className='size-10 text-secondary-foreground hover:bg-purplyblue-400/75'
+                        >
+                            <BookmarkIcon />
+                        </Button>
+                    </div>
+                </div>
+                {/* Comments */}
+                {data.top_comments.map((comment, index) => (
+                    <div className='flex flex-col gap-4' key={index}>
+                        <div className='flex space-x-2 rounded-md'>
+                            <div className='flex w-8 flex-row-reverse text-left'>
+                                <Avatar className='h-6 w-6'>
+                                    <AvatarImage src='/placeholder.svg' />
+                                    <AvatarFallback className='bg-orange-500 text-sm'>YY</AvatarFallback>
+                                </Avatar>
+                            </div>
+                            <div className='bg-nested-background flex-1 rounded-md p-4'>
+                                <div className='flex items-center space-x-2'>
+                                    <Link href='#' className='text-sm font-medium hover:text-blue-400'>
+                                        {comment.name}
+                                    </Link>
+                                    <span className='text-xs text-zinc-500'>4 hours ago</span>
+                                </div>
+                                <p className='text-sm text-zinc-300'>useful</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </CardContent>
+            <CardFooter>
+                <Button variant='ghost' className='ml-8 text-secondary-foreground hover:text-foreground'>
+                    See all 5 comments
+                </Button>
+            </CardFooter>
+        </Card>
+    );
 };
 
 export default Article;

@@ -1,19 +1,21 @@
-import Image from '~/components/wrappers/image';
+import Image from 'next/image';
+
 import SearchBar from '~/components/templates/searchbar';
+import PopoverWrapper from '~/components/wrappers/popover';
 
 import { Button } from '~/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-
 import { BellIcon, SearchIcon } from '~/components/icons/interactive';
-import PopoverWrapper from '~/components/wrappers/popover';
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
+import { Skeleton } from '~/components/ui/skeleton';
 
 const Header = () => {
     return (
         <div className='bg-secondary-background'>
-            <div className='sticky top-0 z-50 mx-auto flex h-header w-full max-w-display justify-between px-6 py-2'>
+            <div className='sticky top-0 z-50 mx-auto flex h-14 max-w-display justify-between px-4 py-2'>
                 <div className='flex gap-x-4'>
                     <Image
-                        className='h-auto w-[50px]'
+                        height={40}
+                        width={50}
                         src='https://media2.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png'
                         alt='DEV Community'
                     />
@@ -28,11 +30,12 @@ const Header = () => {
                         <BellIcon />
                     </Button>
 
-                    <PopoverWrapper content='HELLO'>
+                    <PopoverWrapper>
                         <Avatar>
-                            <AvatarImage src='https://github.com/shadcn.png' />
-                            <AvatarFallback>CN</AvatarFallback>
+                            <AvatarImage src='https://github.com/shadnotcn.png' />
+                            <AvatarFallback className='bg-orange-500 text-lg text-blue-900'>CB</AvatarFallback>
                         </Avatar>
+                        Hello
                     </PopoverWrapper>
                 </div>
             </div>
@@ -41,4 +44,3 @@ const Header = () => {
 };
 
 export default Header;
-// items-center justify-center rounded-full bg-orange-500 p-1 text-white

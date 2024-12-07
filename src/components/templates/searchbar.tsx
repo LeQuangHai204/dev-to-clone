@@ -16,13 +16,18 @@ export default function SearchBar({
     RightIcon?: React.ComponentType;
 }) {
     return (
-        <div className={cn('flex rounded-md bg-background focus-within:ring-0 focus-within:ring-offset-1', className)}>
+        <div
+            className={cn(
+                'flex rounded-md border bg-background focus-within:ring-2 focus:ring-purplyblue-800',
+                className
+            )}
+        >
             {LeftIcon ? (
                 <Button className='h-full hover:bg-purplyblue-400/75' variant='ghost' size='icon'>
                     <LeftIcon />
                 </Button>
             ) : null}
-            <Input className='px-3' variant='square' type='text' placeholder={placeholder} area-label={areaLabel} />
+            <Input className='px-2' variant='square' type='text' placeholder={placeholder} area-label={areaLabel} />
             {RightIcon ? (
                 <Button className='h-full hover:bg-purplyblue-400/75' variant='ghost' size='icon'>
                     <RightIcon />
