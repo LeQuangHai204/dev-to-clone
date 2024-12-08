@@ -10,7 +10,7 @@ import {
     SidebarMenuButton,
 } from '~/components/ui/sidebar';
 
-const RightSidebar = ({
+const ContentSidebar = ({
     className,
     data,
 }: {
@@ -57,4 +57,4 @@ const RightSidebar = ({
     );
 };
 
-export default RightSidebar;
+export default ContentSidebar;

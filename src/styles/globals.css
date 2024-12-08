@@ -91,6 +91,7 @@
 @layer base {
     :root {
         --display-width: 88rem;
+        --profile-width: 62rem;
 
         /* placeholder - only dark mode supported */
         --secondary-background: 0 0% 83%;

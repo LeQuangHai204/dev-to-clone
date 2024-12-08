@@ -43,6 +43,7 @@ export default {
             },
             maxWidth: {
                 display: 'var(--display-width)',
+                profile: 'var(--profile-width)',
             },
             margin: {
                 header: 'var(--header-height)',

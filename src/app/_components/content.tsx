@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-import Article from '~/components/templates/article';
-import SearchBar from '~/components/templates/searchbar';
+import Article from '~/templates/article';
+import SearchBar from '~/templates/searchbar';
 import { Button } from '~/components/ui/button';
 import { MeatballsMenuIcon } from '~/components/icons/popover';
 
