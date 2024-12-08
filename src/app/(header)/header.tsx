@@ -9,8 +9,8 @@ import { Popover, PopoverTrigger, PopoverContent } from '~/components/ui/popover
 
 const Header = () => {
     return (
-        <div className='bg-secondary-background'>
-            <div className='sticky top-0 z-50 mx-auto flex h-14 max-w-display justify-between px-4 py-2'>
+        <div className='h-14 w-full bg-secondary-background'>
+            <div className='sticky top-0 z-50 mx-auto flex max-w-display justify-between px-4 py-2'>
                 <div className='flex basis-1/2 gap-x-4'>
                     <Image
                         height={40}
