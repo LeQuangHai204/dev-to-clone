@@ -9,17 +9,11 @@ import {
     SidebarMenuButton,
 } from '~/components/ui/sidebar';
 
-const SidebarWrapper = ({
+const RightSidebar = ({
     className,
-    side = 'left',
     data,
-    groupVariant = 'default',
-    buttonVariant = 'primary',
-    buttonSize = 'xl',
-    ...props
 }: {
     className?: string;
-    side?: 'left' | 'right';
     data: {
         title?: string;
         items: {
@@ -28,23 +22,24 @@ const SidebarWrapper = ({
             icon?: React.ComponentType;
         }[];
     }[];
-    groupVariant?: 'default' | 'round';
-    buttonVariant?: 'primary' | 'default' | 'outline' | null | undefined;
-    buttonSize?: 'default' | 'sm' | 'lg' | 'xl' | 'fit' | null | undefined;
 }) => {
     return (
-        <Sidebar className={className} side={side} {...props}>
+        <Sidebar className={className} side='left'>
             <SidebarContent>
-                {data.map((block) => (
-                    <SidebarGroup key={block.title} variant={groupVariant}>
-                        {block.title ? <SidebarGroupLabel>{block.title}</SidebarGroupLabel> : null}
+                {data.map((block, index) => (
+                    <SidebarGroup className='overflow-hidden rounded-md' key={index}>
+                        {block.title ? (
+                            <SidebarGroupLabel className='mb-1 bg-secondary-background p-4 text-xl'>
+                                {block.title}
+                            </SidebarGroupLabel>
+                        ) : null}
                         <SidebarGroupContent>
                             <SidebarMenu>
                                 {block.items.map((item) => {
                                     const Icon = item.icon;
                                     return (
                                         <SidebarMenuItem key={item.title}>
-                                            <SidebarMenuButton variant={buttonVariant} size={buttonSize} asChild>
+                                            <SidebarMenuButton asChild size='fit' variant='secondary'>
                                                 <a href={item.url}>
                                                     <div>{Icon ? <Icon /> : null}</div>
                                                     {item.title}
@@ -62,4 +57,4 @@ const SidebarWrapper = ({
     );
 };
 
-export default SidebarWrapper;
+export default RightSidebar;

@@ -4,8 +4,8 @@ import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { Card, CardHeader, CardContent, CardFooter } from '~/components/ui/card';
+import { Popover, PopoverTrigger, PopoverContent } from '~/components/ui/popover';
 import { BookmarkIcon } from '~/components/icons/interactive';
-import PopoverWrapper from '~/components/wrappers/popover';
 
 const Article = ({
     className,
@@ -32,10 +32,14 @@ const Article = ({
                     </Avatar>
                     <div>
                         <div className='flex items-center space-x-1'>
-                            <PopoverWrapper>
-                                <span className='text-sm font-normal text-foreground'>Ismail Kamil</span>
-                                <span>Hello</span>
-                            </PopoverWrapper>
+                            <Popover>
+                                <PopoverTrigger>
+                                    <span className='text-sm font-normal text-foreground'>Ismail Kamil</span>
+                                </PopoverTrigger>
+                                <PopoverContent>
+                                    <span>Hello</span>
+                                </PopoverContent>
+                            </Popover>
                             <div className='text-sm text-secondary-foreground'>for</div>
                             <Link className='text-sm font-normal text-foreground' href='#'>
                                 Apidog

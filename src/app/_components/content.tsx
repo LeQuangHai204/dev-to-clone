@@ -3,11 +3,11 @@ import { useState } from 'react';
 
 import Article from '~/components/templates/article';
 import SearchBar from '~/components/templates/searchbar';
-import PopoverWrapper from '~/components/wrappers/popover';
 import { Button } from '~/components/ui/button';
 import { MeatballsMenuIcon } from '~/components/icons/popover';
 
 import { SearchIcon } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 
 const Content = ({
     className,
@@ -48,10 +48,14 @@ const Content = ({
                         Following
                     </Button>
                 </div>
-                <PopoverWrapper>
-                    <MeatballsMenuIcon />
-                    <SearchIcon />
-                </PopoverWrapper>
+                <Popover>
+                    <PopoverTrigger>
+                        <MeatballsMenuIcon />
+                    </PopoverTrigger>
+                    <PopoverContent>
+                        <SearchIcon />
+                    </PopoverContent>
+                </Popover>
             </div>
             {data.map((article, index) => (
                 <Article key={index} data={article} />

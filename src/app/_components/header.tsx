@@ -1,11 +1,11 @@
 import Image from 'next/image';
 
 import SearchBar from '~/components/templates/searchbar';
-import PopoverWrapper from '~/components/wrappers/popover';
 
 import { Button } from '~/components/ui/button';
 import { BellIcon, SearchIcon } from '~/components/icons/interactive';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
+import { Popover, PopoverTrigger, PopoverContent } from '~/components/ui/popover';
 
 const Header = () => {
     return (
@@ -29,13 +29,15 @@ const Header = () => {
                         <BellIcon />
                     </Button>
 
-                    <PopoverWrapper>
-                        <Avatar>
-                            <AvatarImage src='https://github.com/shadnotcn.png' />
-                            <AvatarFallback className='bg-orange-500 text-lg text-blue-900'>CB</AvatarFallback>
-                        </Avatar>
-                        Hello
-                    </PopoverWrapper>
+                    <Popover>
+                        <PopoverTrigger>
+                            <Avatar>
+                                <AvatarImage src='https://github.com/shadnotcn.png' />
+                                <AvatarFallback className='bg-orange-500 text-lg text-blue-900'>CB</AvatarFallback>
+                            </Avatar>
+                        </PopoverTrigger>
+                        <PopoverContent>Hello</PopoverContent>
+                    </Popover>
                 </div>
             </div>
         </div>

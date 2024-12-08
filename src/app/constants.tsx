@@ -70,9 +70,19 @@ const rightSidebarData = [
                 commentCount: 7,
                 url: '#',
             },
+        ],
+    },
+    {
+        title: 'Active discussions',
+        items: [
             {
-                title: '5 Ways Developers Can Gear Up for an Amazing 2025',
-                commentCount: 2,
+                title: 'Mastering JavaScript: Unleash the Power of Functional Reactive Programming with Higher-Order Streams',
+                commentCount: 3,
+                url: '#',
+            },
+            {
+                title: 'Creating a TypeScript CLI for Your Monorepo',
+                commentCount: 7,
                 url: '#',
             },
         ],
