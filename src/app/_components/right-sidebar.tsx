@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
     Sidebar,
     SidebarContent,
@@ -18,8 +19,8 @@ const RightSidebar = ({
         title?: string;
         items: {
             title?: string;
-            url?: string;
-            icon?: React.ComponentType;
+            url: string;
+            commentCount: number;
         }[];
     }[];
 }) => {
@@ -29,25 +30,24 @@ const RightSidebar = ({
                 {data.map((block, index) => (
                     <SidebarGroup className='overflow-hidden rounded-md' key={index}>
                         {block.title ? (
-                            <SidebarGroupLabel className='mb-1 bg-secondary-background p-4 text-xl'>
+                            <SidebarGroupLabel className='mb-px bg-secondary-background p-4 text-xl'>
                                 {block.title}
                             </SidebarGroupLabel>
                         ) : null}
                         <SidebarGroupContent>
-                            <SidebarMenu>
-                                {block.items.map((item) => {
-                                    const Icon = item.icon;
-                                    return (
-                                        <SidebarMenuItem key={item.title}>
-                                            <SidebarMenuButton asChild size='fit' variant='secondary'>
-                                                <a href={item.url}>
-                                                    <div>{Icon ? <Icon /> : null}</div>
-                                                    {item.title}
-                                                </a>
-                                            </SidebarMenuButton>
-                                        </SidebarMenuItem>
-                                    );
-                                })}
+                            <SidebarMenu className='gap-px'>
+                                {block.items.map((item) => (
+                                    <SidebarMenuItem key={item.title}>
+                                        <SidebarMenuButton className='group/item' size='fit' variant='secondary'>
+                                            <Link href={item.url}>
+                                                {item.title}
+                                                <div className='mt-2 text-sm text-secondary-foreground group-hover/item:text-foreground'>
+                                                    {item.commentCount} comments
+                                                </div>
+                                            </Link>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                ))}
                             </SidebarMenu>
                         </SidebarGroupContent>
                     </SidebarGroup>

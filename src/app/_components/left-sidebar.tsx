@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
     Sidebar,
     SidebarContent,
@@ -18,7 +19,7 @@ const LeftSidebar = ({
         title?: string;
         items: {
             title?: string;
-            url?: string;
+            url: string;
             icon?: React.ComponentType;
         }[];
     }[];
@@ -36,10 +37,10 @@ const LeftSidebar = ({
                                     return (
                                         <SidebarMenuItem key={item.title}>
                                             <SidebarMenuButton variant='primary' size='xl' asChild>
-                                                <a href={item.url}>
+                                                <Link href={item.url}>
                                                     <div>{Icon ? <Icon /> : null}</div>
                                                     {item.title}
-                                                </a>
+                                                </Link>
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
                                     );

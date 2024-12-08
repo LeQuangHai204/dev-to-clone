@@ -444,7 +444,7 @@ const sidebarMenuButtonVariants = cva(
                     'bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
                 primary:
                     'gap-2 rounded-md px-2 text-foreground hover:bg-purplyblue-400/75 hover:text-purplyblue-200 hover:underline',
-                secondary: 'bg-secondary-background p-4',
+                secondary: 'bg-secondary-background p-4 hover:text-purplyblue-200',
             },
             size: {
                 default: 'h-8 text-sm',
