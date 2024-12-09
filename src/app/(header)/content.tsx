@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Article from '~/templates/article';
 import SearchBar from '~/templates/searchbar';
 import { Button } from '~/components/ui/button';
-import { MeatballsMenuIcon } from '~/components/icons/popover';
+import { MeatballsMenuIcon } from '~/components/icons';
 
 import { SearchIcon } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';

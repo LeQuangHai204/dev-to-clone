@@ -1,10 +1,8 @@
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader } from '~/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Badge } from '~/components/ui/badge';
-import { MapPin, Calendar, Mail, Link2, Github, Twitter, MoreHorizontal } from 'lucide-react';
 import { me } from './constants';
-import { MeatballsMenuIcon } from '~/components/icons/popover';
+import { MeatballsMenuIcon } from '~/components/icons';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 
 const ProfilePage = ({ params }: { params: { username: string } }) => {
@@ -32,7 +30,7 @@ const ProfilePage = ({ params }: { params: { username: string } }) => {
                 </Avatar>
             </div>
 
-            <Card className='max-w-profile relative -top-16 mx-auto h-[1000px] w-full border-secondary-foreground bg-secondary-background'>
+            <Card className='relative -top-16 mx-auto h-[1000px] w-full max-w-profile border-secondary-foreground bg-secondary-background'>
                 <CardHeader className='mt-4'>
                     <div className='flex h-10 justify-end gap-x-2'>
                         <Button className='h-full' variant='outline'>

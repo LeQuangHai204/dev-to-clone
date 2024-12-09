@@ -6,7 +6,7 @@ import {
     MicrophoneIcon,
     PlusPlusIcon,
     ThumbsUpIcon,
-} from '~/components/icons/navigation';
+} from '~/components/icons';
 
 const leftSidebarData = [
     {

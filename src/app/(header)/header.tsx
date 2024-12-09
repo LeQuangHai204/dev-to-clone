@@ -3,7 +3,7 @@ import Image from 'next/image';
 import SearchBar from '~/templates/searchbar';
 
 import { Button } from '~/components/ui/button';
-import { BellIcon, SearchIcon } from '~/components/icons/interactive';
+import { BellIcon, SearchIcon } from '~/components/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { Popover, PopoverTrigger, PopoverContent } from '~/components/ui/popover';
 

@@ -5,7 +5,7 @@ import { Button } from '~/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { Card, CardHeader, CardContent, CardFooter } from '~/components/ui/card';
 import { Popover, PopoverTrigger, PopoverContent } from '~/components/ui/popover';
-import { BookmarkIcon } from '~/components/icons/interactive';
+import { BookmarkIcon } from '~/components/icons';
 
 const Article = ({
     className,
@@ -67,14 +67,14 @@ const Article = ({
                     <div className='space-x-2'>
                         <Button
                             variant='ghost'
-                            className='hover:bg-nested-background h-10 text-foreground hover:text-white'
+                            className='h-10 text-foreground hover:bg-nested-background hover:text-white'
                             size='sm'
                         >
                             {data.reactions_count} Reactions
                         </Button>
                         <Button
                             variant='ghost'
-                            className='hover:bg-nested-background h-10 text-foreground hover:text-white'
+                            className='h-10 text-foreground hover:bg-nested-background hover:text-white'
                             size='sm'
                         >
                             {data.comments_count} Comments
@@ -101,7 +101,7 @@ const Article = ({
                                     <AvatarFallback className='bg-orange-500 text-sm'>YY</AvatarFallback>
                                 </Avatar>
                             </div>
-                            <div className='bg-nested-background flex-1 rounded-md p-4'>
+                            <div className='flex-1 rounded-md bg-nested-background p-4'>
                                 <div className='flex items-center space-x-2'>
                                     <Link href='#' className='text-sm font-medium hover:text-blue-400'>
                                         {comment.name}
