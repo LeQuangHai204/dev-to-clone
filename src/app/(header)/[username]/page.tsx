@@ -5,11 +5,11 @@ import { me } from './constants';
 import { MeatballsMenuIcon } from '~/components/icons';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 
-const ProfilePage = ({ params }: { params: { username: string } }) => {
+const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }> }) => {
+    const username = await params;
     const {
         id,
         name,
-        username,
         color,
         image,
         biography,
