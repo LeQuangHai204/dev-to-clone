@@ -20,7 +20,7 @@ const Header = () => {
                     />
                     <SearchBar className='grow' placeholder='Search ...' LeftIcon={SearchIcon} />
                 </div>
-                <div className='flex gap-x-4'>
+                <div className='mr-4 flex gap-x-3'>
                     <Button variant='primary' className='h-full'>
                         Create Post
                     </Button>

@@ -49,8 +49,8 @@ const Content = ({
                     </Button>
                 </div>
                 <Popover>
-                    <PopoverTrigger>
-                        <MeatballsMenuIcon />
+                    <PopoverTrigger className='aspect-square'>
+                        <MeatballsMenuIcon className='mx-auto text-secondary-foreground hover:text-foreground' />
                     </PopoverTrigger>
                     <PopoverContent>
                         <SearchIcon />

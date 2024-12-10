@@ -1,339 +1,202 @@
-const BookmarkIcon = ({ className, size = '1.5rem' }: { className?: string; size?: string }) => (
-    <svg
-        className={className}
-        width={size}
-        height={size}
-        xmlns='http://www.w3.org/2000/svg'
-        aria-hidden='true'
-        focusable='false'
-        fill='currentColor'
-    >
-        <path d='M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z'></path>
-    </svg>
-);
-
-const BellIcon = ({ className, size = '1.8rem' }: { className?: string; size?: string }) => (
-    <svg
-        className={className}
-        xmlns='http://www.w3.org/2000/svg'
-        width={size}
-        height={size}
-        aria-labelledby='atpnbwi9gs3oz6yon8s66o8ptdmup8wm'
-        role='img'
-        viewBox='0 0 24 24'
-        fill='currentColor'
-    >
-        <title id='atpnbwi9gs3oz6yon8s66o8ptdmup8wm'>Notifications</title>
-        <path d='M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z'></path>
-    </svg>
-);
-
-const SearchIcon = ({ className, size = '1.5rem' }: { className?: string; size?: string }) => (
-    <svg
-        className={className}
-        xmlns='http://www.w3.org/2000/svg'
-        width={size}
-        height={size}
-        viewBox='0 0 24 24'
-        aria-hidden='true'
-        focusable='false'
-        fill='currentColor'
-    >
-        <path d='M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z'></path>
-    </svg>
-);
-
-const MeatballsMenuIcon = ({ className, size = '2.25rem' }: { className?: string; size?: string }) => (
-    <svg
-        className={className}
-        xmlns='http://www.w3.org/2000/svg'
-        width={size}
-        height={size}
-        viewBox='0 0 24 24'
-        role='img'
-        fill='currentColor'
-    >
-        <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z'
-        ></path>
-    </svg>
-);
-
 // https://stackoverflow.com/questions/19484707/how-can-i-make-an-svg-scale-with-its-parent-container
 
-const HomeIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
+interface IconProps {
     className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg className={className} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' width={width} height={height}>
-        <g>
+    size?: string;
+}
+
+const BookmarkIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size} fill='currentColor'>
+        <path d='M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z' />
+    </svg>
+);
+
+const BellIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size} fill='currentColor'>
+        <path d='M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z' />
+    </svg>
+);
+
+const SearchIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size} fill='currentColor'>
+        <path d='M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z' />
+    </svg>
+);
+
+const MeatballsMenuIcon = ({ className, size = '2rem' }: IconProps) => (
+    <svg className={className} width={size} height={size} fill='currentColor'>
+        <g transform={`scale(${parseFloat(size) / 1.5})`}>
+            <path d='M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z' />
+        </g>
+    </svg>
+);
+
+const HomeIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size} fill='currentColor'>
+        <g transform={`scale(${parseFloat(size) / 2.5})`}>
             <path
                 fill='#A0041E'
                 d='M13.344 18.702h-2a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5h2a.5.5 0 01.5.5v7a.5.5 0 01-.5.5z'
-            ></path>
-            <path fill='#FFE8B6' d='M9 20L22 7l13 13v17H9z'></path>
-            <path fill='#FFCC4D' d='M22 20h1v16h-1z'></path>
+            />
+            <path fill='#FFE8B6' d='M9 20L22 7l13 13v17H9z' />
+            <path fill='#FFCC4D' d='M22 20h1v16h-1z' />
             <path
                 fill='#66757F'
                 d='M35 21a.997.997 0 01-.707-.293L22 8.414 9.707 20.707a1 1 0 11-1.414-1.414l13-13a.999.999 0 011.414 0l13 13A.999.999 0 0135 21z'
-            ></path>
+            />
             <path
                 fill='#66757F'
                 d='M22 21a.999.999 0 01-.707-1.707l6.5-6.5a1 1 0 111.414 1.414l-6.5 6.5A.997.997 0 0122 21z'
-            ></path>
-            <path fill='#C1694F' d='M14 30h4v6h-4z'></path>
-            <path fill='#55ACEE' d='M14 21h4v4h-4zm12.5 0h4v4h-4zm0 9h4v4h-4z'></path>
-            <path fill='#5C913B' d='M37.5 37.5A1.5 1.5 0 0136 39H8a1.5 1.5 0 010-3h28a1.5 1.5 0 011.5 1.5z'></path>
+            />
+            <path fill='#C1694F' d='M14 30h4v6h-4z' />
+            <path fill='#55ACEE' d='M14 21h4v4h-4zm12.5 0h4v4h-4zm0 9h4v4h-4z' />
+            <path fill='#5C913B' d='M37.5 37.5A1.5 1.5 0 0136 39H8a1.5 1.5 0 010-3h28a1.5 1.5 0 011.5 1.5z' />
         </g>
     </svg>
 );
 
-const VideoIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
-    className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg className={className} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' width={width} height={height}>
-        <g transform='translate(4 4)'>
-            <path
-                fill='#31373D'
-                d='M34.074 18l-4.832 3H28v-4c0-.088-.02-.169-.026-.256C31.436 15.864 34 12.735 34 9a8 8 0 00-16.001 0c0 1.463.412 2.822 1.099 4H14.92c.047-.328.08-.66.08-1a7 7 0 10-14 0 6.995 6.995 0 004 6.317V29a4 4 0 004 4h15a4 4 0 004-4v-3h1.242l4.832 3H35V18h-.926zM28.727 3.977a5.713 5.713 0 012.984 4.961L28.18 8.35a2.276 2.276 0 00-.583-.982l1.13-3.391zm-.9 6.342l3.552.592a5.713 5.713 0 01-4.214 3.669 3.985 3.985 0 00-1.392-1.148l.625-2.19a2.425 2.425 0 001.429-.923zM26 3.285c.282 0 .557.027.828.067l-1.131 3.392c-.404.054-.772.21-1.081.446L21.42 5.592A5.703 5.703 0 0126 3.285zM20.285 9c0-.563.085-1.106.236-1.62l3.194 1.597-.002.023c0 .657.313 1.245.771 1.662L23.816 13h-1.871a5.665 5.665 0 01-1.66-4zm-9.088-.385A4.64 4.64 0 0112.667 12c0 .344-.043.677-.113 1H10.1c.145-.304.233-.641.233-1a2.32 2.32 0 00-.392-1.292l1.256-2.093zM8 7.333c.519 0 1.01.105 1.476.261L8.22 9.688c-.073-.007-.145-.022-.22-.022a2.32 2.32 0 00-1.292.392L4.615 8.803A4.64 4.64 0 018 7.333zM3.333 12c0-.519.105-1.01.261-1.477l2.095 1.257c-.007.073-.022.144-.022.22 0 .75.36 1.41.91 1.837a3.987 3.987 0 00-1.353 1.895C4.083 14.881 3.333 13.533 3.333 12z'
-            ></path>
-            <circle fill='#8899A6' cx='24' cy='19' r='2'></circle>
-            <circle fill='#8899A6' cx='9' cy='19' r='2'></circle>
-            <path fill='#8899A6' d='M24 27a2 2 0 00-2-2H11a2 2 0 00-2 2v6a2 2 0 002 2h11a2 2 0 002-2v-6z'></path>
-        </g>
-    </svg>
-);
-
-const PlusPlusIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
-    className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg
-        className={className}
-        width={width}
-        height={height}
-        version='1.0'
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 166.000000 102.000000'
-        preserveAspectRatio='xMidYMid meet'
-        fill='#3b49df'
-    >
+const PlusPlusIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg width={size} height={size} fill='#3b49df' viewBox='0 0 166.000000 102.000000'>
         <g transform='translate(0.000000,102.000000) scale(0.100000,-0.100000)' fill='#3b49df' stroke='none'>
-            <path
-                d='M305 953 c-42 -22 -64 -43 -83 -78 -14 -25 -18 -76 -22 -305 -7 -313
-    -12 -336 -96 -450 -24 -33 -44 -62 -44 -65 0 -3 318 -4 708 -3 l707 3 47 27
-    c32 20 52 41 67 72 21 43 22 54 19 374 l-3 330 -31 39 c-61 76 -30 73 -669 73
-    -500 -1 -574 -3 -600 -17z m405 -278 l0 -84 83 -3 82 -3 0 -75 0 -75 -82 -3
-    -83 -3 0 -84 0 -85 -75 0 -75 0 0 85 0 85 -75 0 c-41 0 -75 3 -75 8 0 4 8 39
-    18 77 l18 70 57 3 57 3 0 84 0 85 75 0 75 0 0 -85z m578 -2 l3 -82 82 -3 82
-    -3 0 -75 0 -75 -82 -3 -82 -3 -3 -82 -3 -82 -75 0 -75 0 -3 83 -3 82 -79 0
-    -80 0 0 80 0 80 80 0 80 0 0 78 c0 43 3 82 7 86 4 4 39 5 78 4 l70 -3 3 -82z'
-            ></path>
+            <path d='M305 953 c-42 -22 -64 -43 -83 -78 -14 -25 -18 -76 -22 -305 -7 -313 -12 -336 -96 -450 -24 -33 -44 -62 -44 -65 0 -3 318 -4 708 -3 l707 3 47 27 c32 20 52 41 67 72 21 43 22 54 19 374 l-3 330 -31 39 c-61 76 -30 73 -669 73 -500 -1 -574 -3 -600 -17z m405 -278 l0 -84 83 -3 82 -3 0 -75 0 -75 -82 -3 -83 -3 0 -84 0 -85 -75 0 -75 0 0 85 0 85 -75 0 c-41 0 -75 3 -75 8 0 4 8 39 18 77 l18 70 57 3 57 3 0 84 0 85 75 0 75 0 0 -85z m578 -2 l3 -82 82 -3 82 -3 0 -75 0 -75 -82 -3 -82 -3 -3 -82 -3 -82 -75 0 -75 0 -3 83 -3 82 -79 0 -80 0 0 80 0 80 80 0 80 0 0 78 c0 43 3 82 7 86 4 4 39 5 78 4 l70 -3 3 -82z' />
         </g>
     </svg>
 );
 
-const DrawerIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
-    className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg className={className} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' width={width} height={height}>
-        <g>
+const DrawerIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size}>
+        <g transform={`scale(${parseFloat(size) / 2.5})`}>
             <path
                 fill='#67757F'
                 d='M39 24c0 2.209-1.791 2-4 2H9c-2.209 0-4 .209-4-2l2-12c.125-1.917 1.791-4 4-4h22c2.209 0 3.791 2.208 4 4l2 12z'
-            ></path>
-            <path fill='#CCD6DD' d='M32 17a2 2 0 01-2 2H14a2 2 0 01-2-2V9a2 2 0 012-2h16a2 2 0 012 2v8z'></path>
-            <path fill='#E1E8ED' d='M34 21a2 2 0 01-2 2H12a2 2 0 01-2-2v-8a2 2 0 012-2h20a2 2 0 012 2v8z'></path>
-            <path fill='#F5F8FA' d='M36 25a2 2 0 01-2 2H10a2 2 0 01-2-2v-8a2 2 0 012-2h24a2 2 0 012 2v8z'></path>
-            <path fill='#9AAAB4' d='M39 35a4 4 0 01-4 4H9a4 4 0 01-4-4V24a4 4 0 014-4h26a4 4 0 014 4v11z'></path>
-            <path fill='#67757F' d='M18 16zm0 0z'></path>
-            <path fill='#FCAB40' d='M26 5h-5a2 2 0 00-2 2v1h4a2 2 0 012 2h1a2 2 0 002-2V7a2 2 0 00-2-2z'></path>
-            <path fill='#5DADEC' d='M22 9h-5a2 2 0 00-2 2v1h4a2 2 0 012 2h1a2 2 0 002-2v-1a2 2 0 00-2-2z'></path>
-            <path fill='#E75A70' d='M20 16a2 2 0 01-2 2h-5a2 2 0 01-2-2v-1a2 2 0 012-2h5a2 2 0 012 2v1z'></path>
-            <path fill='#67757F' d='M29 32a2 2 0 01-2 2H17a2 2 0 01-2-2v-5a2 2 0 012-2h10a2 2 0 012 2v5zm-11-4z'></path>
-            <path fill='#E1E8ED' d='M27 31a1 1 0 01-1 1h-8a1 1 0 01-1-1v-3a1 1 0 011-1h8a1 1 0 011 1v3z'></path>
+            />
+            <path fill='#CCD6DD' d='M32 17a2 2 0 01-2 2H14a2 2 0 01-2-2V9a2 2 0 012-2h16a2 2 0 012 2v8z' />
+            <path fill='#E1E8ED' d='M34 21a2 2 0 01-2 2H12a2 2 0 01-2-2v-8a2 2 0 012-2h20a2 2 0 012 2v8z' />
+            <path fill='#F5F8FA' d='M36 25a2 2 0 01-2 2H10a2 2 0 01-2-2v-8a2 2 0 012-2h24a2 2 0 012 2v8z' />
+            <path fill='#9AAAB4' d='M39 35a4 4 0 01-4 4H9a4 4 0 01-4-4V24a4 4 0 014-4h26a4 4 0 014 4v11z' />
+            <path fill='#67757F' d='M18 16zm0 0z' />
+            <path fill='#FCAB40' d='M26 5h-5a2 2 0 00-2 2v1h4a2 2 0 012 2h1a2 2 0 002-2V7a2 2 0 00-2-2z' />
+            <path fill='#5DADEC' d='M22 9h-5a2 2 0 00-2 2v1h4a2 2 0 012 2h1a2 2 0 002-2v-1a2 2 0 00-2-2z' />
+            <path fill='#E75A70' d='M20 16a2 2 0 01-2 2h-5a2 2 0 01-2-2v-1a2 2 0 012-2h5a2 2 0 012 2v1z' />
+            <path fill='#67757F' d='M29 32a2 2 0 01-2 2H17a2 2 0 01-2-2v-5a2 2 0 012-2h10a2 2 0 012 2v5zm-11-4z' />
+            <path fill='#E1E8ED' d='M27 31a1 1 0 01-1 1h-8a1 1 0 01-1-1v-3a1 1 0 011-1h8a1 1 0 011 1v3z' />
         </g>
     </svg>
 );
 
-const MicrophoneIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
-    className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg className={className} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' width={width} height={height}>
-        <g>
+const MicrophoneIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size}>
+        <g transform={`scale(${parseFloat(size) / 2.5})`}>
             <path
                 fill='#292F33'
                 d='M10 19h24v2H10zm15 15c0 2.208-.792 4-3 4-2.209 0-3-1.792-3-4s.791-2 3-2c2.208 0 3-.208 3 2z'
-            ></path>
-            <path fill='#66757F' d='M22 35c-6.627 0-10 1.343-10 3v2h20v-2c0-1.657-3.373-3-10-3z'></path>
-            <path fill='#99AAB5' d='M22 4a9 9 0 00-9 9v7h18v-7a9 9 0 00-9-9z'></path>
+            />
+            <path fill='#66757F' d='M22 35c-6.627 0-10 1.343-10 3v2h20v-2c0-1.657-3.373-3-10-3z' />
+            <path fill='#99AAB5' d='M22 4a9 9 0 00-9 9v7h18v-7a9 9 0 00-9-9z' />
             <g fill='#292F33' transform='translate(4 4)'>
-                <circle cx='15.5' cy='2.5' r='1.5'></circle>
-                <circle cx='20.5' cy='2.5' r='1.5'></circle>
-                <circle cx='17.5' cy='6.5' r='1.5'></circle>
-                <circle cx='22.5' cy='6.5' r='1.5'></circle>
-                <circle cx='12.5' cy='6.5' r='1.5'></circle>
-                <circle cx='15.5' cy='10.5' r='1.5'></circle>
-                <circle cx='10.5' cy='10.5' r='1.5'></circle>
-                <circle cx='20.5' cy='10.5' r='1.5'></circle>
-                <circle cx='25.5' cy='10.5' r='1.5'></circle>
-                <circle cx='17.5' cy='14.5' r='1.5'></circle>
-                <circle cx='22.5' cy='14.5' r='1.5'></circle>
-                <circle cx='12.5' cy='14.5' r='1.5'></circle>
+                <circle cx='15.5' cy='2.5' r='1.5' />
+                <circle cx='20.5' cy='2.5' r='1.5' />
+                <circle cx='17.5' cy='6.5' r='1.5' />
+                <circle cx='22.5' cy='6.5' r='1.5' />
+                <circle cx='12.5' cy='6.5' r='1.5' />
+                <circle cx='15.5' cy='10.5' r='1.5' />
+                <circle cx='10.5' cy='10.5' r='1.5' />
+                <circle cx='20.5' cy='10.5' r='1.5' />
+                <circle cx='25.5' cy='10.5' r='1.5' />
+                <circle cx='17.5' cy='14.5' r='1.5' />
+                <circle cx='22.5' cy='14.5' r='1.5' />
+                <circle cx='12.5' cy='14.5' r='1.5' />
             </g>
-            <path fill='#66757F' d='M13 19.062V21c0 4.971 4.029 9 9 9s9-4.029 9-9v-1.938H13z'></path>
+            <path fill='#66757F' d='M13 19.062V21c0 4.971 4.029 9 9 9s9-4.029 9-9v-1.938H13z' />
             <path
                 fill='#66757F'
                 d='M34 18a1 1 0 00-1 1v2c0 6.074-4.925 11-11 11s-11-4.926-11-11v-2a1 1 0 00-2 0v2c0 7.18 5.82 13 13 13s13-5.82 13-13v-2a1 1 0 00-1-1z'
-            ></path>
+            />
         </g>
     </svg>
 );
 
-const ThumbsUpIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
-    className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg className={className} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' width={width} height={height}>
-        <g>
+const ThumbsUpIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size}>
+        <g transform={`scale(${parseFloat(size) / 2.5})`}>
             <path
                 fill='#FFDB5E'
                 d='M38.956 21.916c0-.503-.12-.975-.321-1.404-1.341-4.326-7.619-4.01-16.549-4.221-1.493-.035-.639-1.798-.115-5.668.341-2.517-1.282-6.382-4.01-6.382-4.498 0-.171 3.548-4.148 12.322-2.125 4.688-6.875 2.062-6.875 6.771v10.719c0 1.833.18 3.595 2.758 3.885 2.499.281 1.937 2.062 5.542 2.062h18.044a3.337 3.337 0 003.333-3.334c0-.762-.267-1.456-.698-2.018 1.02-.571 1.72-1.649 1.72-2.899 0-.76-.266-1.454-.696-2.015 1.023-.57 1.725-1.649 1.725-2.901 0-.909-.368-1.733-.961-2.336a3.311 3.311 0 001.251-2.581z'
-            ></path>
+            />
             <path
                 fill='#EE9547'
                 d='M27.02 25.249h8.604c1.17 0 2.268-.626 2.866-1.633a.876.876 0 00-1.506-.892 1.588 1.588 0 01-1.361.775h-8.81c-.873 0-1.583-.71-1.583-1.583s.71-1.583 1.583-1.583H32.7a.875.875 0 000-1.75h-5.888a3.337 3.337 0 00-3.333 3.333c0 1.025.475 1.932 1.205 2.544a3.32 3.32 0 00-.998 2.373c0 1.028.478 1.938 1.212 2.549a3.318 3.318 0 00.419 5.08 3.305 3.305 0 00-.852 2.204 3.337 3.337 0 003.333 3.333h5.484a3.35 3.35 0 002.867-1.632.875.875 0 00-1.504-.894 1.594 1.594 0 01-1.363.776h-5.484c-.873 0-1.583-.71-1.583-1.583s.71-1.583 1.583-1.583h6.506a3.35 3.35 0 002.867-1.633.875.875 0 10-1.504-.894 1.572 1.572 0 01-1.363.777h-7.063a1.585 1.585 0 010-3.167h8.091a3.35 3.35 0 002.867-1.632.875.875 0 00-1.504-.894 1.573 1.573 0 01-1.363.776H27.02a1.585 1.585 0 010-3.167z'
-            ></path>
+            />
         </g>
     </svg>
 );
 
-const FaceIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
-    className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg className={className} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' width={width} height={height}>
-        <g transform='translate(4 4)'>
-            <circle fill='#FFCC4D' cx='18' cy='18' r='18'></circle>
+const FaceIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size}>
+        <g transform={`scale(${parseFloat(size) / 2.3})`}>
+            <circle fill='#FFCC4D' cx='18' cy='18' r='18' />
             <path
                 fill='#664500'
                 d='M27.335 23.629a.501.501 0 00-.635-.029c-.039.029-3.922 2.9-8.7 2.9-4.766 0-8.662-2.871-8.7-2.9a.5.5 0 10-.729.657C8.7 24.472 11.788 29.5 18 29.5s9.301-5.028 9.429-5.243a.499.499 0 00-.094-.628z'
-            ></path>
+            />
             <path
                 fill='#65471B'
                 d='M18 26.591c-.148 0-.291-.011-.438-.016v4.516h.875v-4.517c-.145.005-.289.017-.437.017z'
-            ></path>
+            />
             <path
                 fill='#FFF'
                 d='M22 26c.016-.004-1.45.378-2.446.486-.366.042-.737.076-1.117.089v4.517H20c1.1 0 2-.9 2-2V26zm-8 0c-.016-.004 1.45.378 2.446.486.366.042.737.076 1.117.089v4.517H16c-1.1 0-2-.9-2-2V26z'
-            ></path>
+            />
             <path
                 fill='#65471B'
                 d='M27.335 23.629a.501.501 0 00-.635-.029c-.03.022-2.259 1.668-5.411 2.47-.443.113-1.864.43-3.286.431-1.424 0-2.849-.318-3.292-.431-3.152-.802-5.381-2.448-5.411-2.47a.501.501 0 00-.729.657c.097.162 1.885 3.067 5.429 4.481v-1.829c-.016-.004 1.45.378 2.446.486.366.042.737.076 1.117.089.146.005.289.016.437.016.148 0 .291-.011.438-.016.38-.013.751-.046 1.117-.089.996-.108 2.462-.49 2.446-.486v1.829c3.544-1.414 5.332-4.319 5.429-4.481a.5.5 0 00-.095-.628zm-.711-9.605c0 1.714-.938 3.104-2.096 3.104-1.157 0-2.096-1.39-2.096-3.104s.938-3.104 2.096-3.104c1.158 0 2.096 1.39 2.096 3.104zm-17.167 0c0 1.714.938 3.104 2.096 3.104 1.157 0 2.096-1.39 2.096-3.104s-.938-3.104-2.096-3.104c-1.158 0-2.096 1.39-2.096 3.104z'
-            ></path>
+            />
             <path
                 fill='#292F33'
                 d='M34.808 9.627c-.171-.166-1.267.274-2.376-.291-2.288-1.166-8.07-2.291-11.834.376-.403.285-2.087.333-2.558.313-.471.021-2.155-.027-2.558-.313-3.763-2.667-9.545-1.542-11.833-.376-1.109.565-2.205.125-2.376.291-.247.239-.247 1.196.001 1.436.246.239 1.477.515 1.722 1.232.247.718.249 4.958 2.213 6.424 1.839 1.372 6.129 1.785 8.848.238 2.372-1.349 2.289-4.189 2.724-5.881.155-.603.592-.907 1.26-.907s1.105.304 1.26.907c.435 1.691.351 4.532 2.724 5.881 2.719 1.546 7.009 1.133 8.847-.238 1.965-1.465 1.967-5.706 2.213-6.424.245-.717 1.476-.994 1.722-1.232.248-.24.249-1.197.001-1.436zm-20.194 3.65c-.077 1.105-.274 3.227-1.597 3.98-.811.462-1.868.743-2.974.743h-.001c-1.225 0-2.923-.347-3.587-.842-.83-.619-1.146-3.167-1.265-4.12-.076-.607-.28-2.09.388-2.318 1.06-.361 2.539-.643 4.052-.643.693 0 3.021.043 4.155.741 1.005.617.872 1.851.829 2.459zm16.278-.253c-.119.954-.435 3.515-1.265 4.134-.664.495-2.362.842-3.587.842h-.001c-1.107 0-2.163-.281-2.975-.743-1.323-.752-1.52-2.861-1.597-3.966-.042-.608-.176-1.851.829-2.468 1.135-.698 3.462-.746 4.155-.746 1.513 0 2.991.277 4.052.638.668.228.465 1.702.389 2.309z'
-            ></path>
+            />
         </g>
     </svg>
 );
 
-const TagIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
-    className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg className={className} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' width={width} height={height}>
-        <g>
-            <path
-                fill='#FFD983'
-                d='M36.017 24.181L21.345 9.746C20.687 9.087 19.823 9 18.96 9H8.883C7.029 9 6 10.029 6 11.883v10.082c0 .861.089 1.723.746 2.38L21.3 39.017a3.287 3.287 0 004.688 0l10.059-10.088c1.31-1.312 1.28-3.438-.03-4.748zm-23.596-8.76a1.497 1.497 0 11-2.118-2.117 1.497 1.497 0 012.118 2.117z'
-            ></path>
-            <path
-                fill='#D99E82'
-                d='M13.952 11.772a3.66 3.66 0 00-5.179 0 3.663 3.663 0 105.18 5.18 3.664 3.664 0 00-.001-5.18zm-1.53 3.65a1.499 1.499 0 11-2.119-2.12 1.499 1.499 0 012.119 2.12z'
-            ></path>
-            <path
-                fill='#C1694F'
-                d='M12.507 14.501a1 1 0 11-1.415-1.414l8.485-8.485a1 1 0 111.415 1.414l-8.485 8.485z'
-            ></path>
-        </g>
-    </svg>
-);
-
-const EyesIcon = ({
-    className,
-    width = '1.5rem',
-    height = '1.5rem',
-}: {
-    className?: string;
-    width?: string;
-    height?: string;
-}) => (
-    <svg className={className} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' width={width} height={height}>
-        <g transform='translate(4 4)'>
+const EyesIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size}>
+        <g transform={`scale(${parseFloat(size) / 2.3})`}>
             <ellipse fill='#F5F8FA' cx='8.828' cy='18' rx='7.953' ry='13.281'></ellipse>
             <path
                 fill='#E1E8ED'
                 d='M8.828 32.031C3.948 32.031.125 25.868.125 18S3.948 3.969 8.828 3.969 17.531 10.132 17.531 18s-3.823 14.031-8.703 14.031zm0-26.562C4.856 5.469 1.625 11.09 1.625 18s3.231 12.531 7.203 12.531S16.031 24.91 16.031 18 12.8 5.469 8.828 5.469z'
-            ></path>
-            <circle fill='#8899A6' cx='6.594' cy='18' r='4.96'></circle>
-            <circle fill='#292F33' cx='6.594' cy='18' r='3.565'></circle>
-            <circle fill='#F5F8FA' cx='7.911' cy='15.443' r='1.426'></circle>
+            />
+            <circle fill='#8899A6' cx='6.594' cy='18' r='4.96' />
+            <circle fill='#292F33' cx='6.594' cy='18' r='3.565' />
+            <circle fill='#F5F8FA' cx='7.911' cy='15.443' r='1.426' />
             <ellipse fill='#F5F8FA' cx='27.234' cy='18' rx='7.953' ry='13.281'></ellipse>
             <path
                 fill='#E1E8ED'
                 d='M27.234 32.031c-4.88 0-8.703-6.163-8.703-14.031s3.823-14.031 8.703-14.031S35.938 10.132 35.938 18s-3.824 14.031-8.704 14.031zm0-26.562c-3.972 0-7.203 5.622-7.203 12.531 0 6.91 3.231 12.531 7.203 12.531S34.438 24.91 34.438 18 31.206 5.469 27.234 5.469z'
-            ></path>
-            <circle fill='#8899A6' cx='25' cy='18' r='4.96'></circle>
-            <circle fill='#292F33' cx='25' cy='18' r='3.565'></circle>
-            <circle fill='#F5F8FA' cx='26.317' cy='15.443' r='1.426'></circle>
+            />
+            <circle fill='#8899A6' cx='25' cy='18' r='4.96' />
+            <circle fill='#292F33' cx='25' cy='18' r='3.565' />
+            <circle fill='#F5F8FA' cx='26.317' cy='15.443' r='1.426' />
         </g>
+    </svg>
+);
+
+const LocationIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size} fill='currentColor'>
+        <path d='M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1112.728 0zM12 13a2 2 0 100-4 2 2 0 000 4z' />
+    </svg>
+);
+
+const CakeIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size} fill='currentColor'>
+        <path d='M8 6v3.999h3V6h2v3.999h3V6h2v3.999L19 10a3 3 0 012.995 2.824L22 13v1c0 1.014-.377 1.94-.999 2.645L21 21a1 1 0 01-1 1H4a1 1 0 01-1-1v-4.36a4.025 4.025 0 01-.972-2.182l-.022-.253L2 14v-1a3 3 0 012.824-2.995L5 10l1-.001V6h2zm11 6H5a1 1 0 00-.993.883L4 13v.971l.003.147a2 2 0 003.303 1.4c.363-.312.602-.744.674-1.218l.015-.153.005-.176c.036-1.248 1.827-1.293 1.989-.134l.01.134.004.147a2 2 0 003.992.031l.012-.282c.124-1.156 1.862-1.156 1.986 0l.012.282a2 2 0 003.99 0L20 14v-1a1 1 0 00-.883-.993L19 12zM7 1c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 11-2.898-.776C5.85 2.002 7 2.5 7 1zm5 0c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 01-2.898-.776C10.85 2.002 12 2.5 12 1zm5 0c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 01-2.898-.776C15.85 2.002 17 2.5 17 1z' />
+    </svg>
+);
+
+const RedirectIcon = ({ className, size = '1.5rem' }: IconProps) => (
+    <svg className={className} width={size} height={size} fill='currentColor'>
+        <path d='M10.667 8v1.333H7.333v7.334h7.334v-3.334H16v4a.666.666 0 01-.667.667H6.667A.666.666 0 016 17.333V8.667A.667.667 0 016.667 8h4zM18 6v5.333h-1.333V8.275l-5.196 5.196-.942-.942 5.194-5.196h-3.056V6H18z' />
     </svg>
 );
 
@@ -346,9 +209,10 @@ export {
     PlusPlusIcon,
     DrawerIcon,
     MicrophoneIcon,
-    VideoIcon,
     ThumbsUpIcon,
     FaceIcon,
-    TagIcon,
     EyesIcon,
+    LocationIcon,
+    CakeIcon,
+    RedirectIcon,
 };

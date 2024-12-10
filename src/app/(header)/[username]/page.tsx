@@ -2,7 +2,7 @@ import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader } from '~/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { me } from './constants';
-import { MeatballsMenuIcon } from '~/components/icons';
+import { MeatballsMenuIcon, LocationIcon, CakeIcon, RedirectIcon } from '~/components/icons';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 
 const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }> }) => {
@@ -21,6 +21,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
         work,
         organizations,
     } = me;
+
     return (
         <>
             <div className='flex h-32 w-full items-center justify-center' style={{ backgroundColor: color }}>
@@ -37,21 +38,58 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                             Follow
                         </Button>
                         <Popover>
-                            <PopoverTrigger className='rounded-md hover:bg-purplyblue-400/75'>
-                                <MeatballsMenuIcon />
+                            <PopoverTrigger className='aspect-square rounded-md hover:bg-purplyblue-400/75'>
+                                <MeatballsMenuIcon className='mx-auto text-secondary-foreground' />
                             </PopoverTrigger>
                             <PopoverContent>Hello</PopoverContent>
                         </Popover>
                     </div>
+                </CardHeader>
+                <CardContent className='border'>
                     <div className='text-center text-3xl font-bold'>{name}</div>
                     <div className='mx-auto max-w-3xl text-center'>{biography}</div>
-                </CardHeader>
-                <CardContent>
-                    <div className='flex justify-center border'>
-                        <div className='h-6 w-10 bg-red-500'></div>
-                        <div className='h-6 w-10 bg-yellow-500'></div>
+                    <div className='flex justify-center'>
+                        <Button
+                            className='px-3 py-1 text-sm text-secondary-foreground hover:text-purplyblue-200'
+                            variant='ghost'
+                        >
+                            <LocationIcon />
+                            {location}
+                        </Button>
+                        <Button
+                            className='px-3 py-1 text-sm text-secondary-foreground hover:text-purplyblue-200'
+                            variant='ghost'
+                        >
+                            <CakeIcon />
+                            Joined on{' '}
+                            {new Date(created_at).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric',
+                            })}
+                        </Button>
+                        <Button
+                            className='px-3 py-1 text-sm text-secondary-foreground hover:text-purplyblue-200'
+                            variant='ghost'
+                        >
+                            <RedirectIcon />
+                            {contact.website}
+                        </Button>
                     </div>
-                    <div></div>
+                    <div className='flex justify-evenly border-t'>
+                        <div className=''>
+                            <div className='text-center text-secondary-foreground'>Education</div>
+                            <div className='text-center text-white'>{education}</div>
+                        </div>
+                        <div className=''>
+                            <div className='text-center text-secondary-foreground'>Pronouns</div>
+                            <div className='text-center text-white'>{pronouns}</div>
+                        </div>{' '}
+                        <div className=''>
+                            <div className='text-center text-secondary-foreground'>Work</div>
+                            <div className='text-center text-white'>{work}</div>
+                        </div>
+                    </div>
                     <div></div>
                 </CardContent>
             </Card>
