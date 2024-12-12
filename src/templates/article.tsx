@@ -10,6 +10,7 @@ import { BookmarkIcon } from '~/components/icons';
 const Article = ({
     className,
     data,
+    showComments,
 }: {
     className?: string;
     data: {
@@ -21,6 +22,7 @@ const Article = ({
             profile_image?: string;
         }[];
     };
+    showComments?: boolean;
 }) => {
     return (
         <Card className={cn('w-full cursor-pointer bg-secondary-background', className)}>
@@ -92,27 +94,29 @@ const Article = ({
                     </div>
                 </div>
                 {/* Comments */}
-                {data.top_comments.map((comment, index) => (
-                    <div className='flex flex-col gap-4' key={index}>
-                        <div className='flex space-x-2 rounded-md'>
-                            <div className='flex w-8 flex-row-reverse text-left'>
-                                <Avatar className='h-6 w-6'>
-                                    <AvatarImage src='/placeholder.svg' />
-                                    <AvatarFallback className='bg-orange-500 text-sm'>YY</AvatarFallback>
-                                </Avatar>
-                            </div>
-                            <div className='flex-1 rounded-md bg-nested-background p-4'>
-                                <div className='flex items-center space-x-2'>
-                                    <Link href='#' className='text-sm font-medium hover:text-blue-400'>
-                                        {comment.name}
-                                    </Link>
-                                    <span className='text-xs text-zinc-500'>4 hours ago</span>
-                                </div>
-                                <p className='text-sm text-zinc-300'>useful</p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+                {showComments
+                    ? data.top_comments.map((comment, index) => (
+                          <div className='flex flex-col gap-4' key={index}>
+                              <div className='flex space-x-2 rounded-md'>
+                                  <div className='flex w-8 flex-row-reverse text-left'>
+                                      <Avatar className='h-6 w-6'>
+                                          <AvatarImage src='/placeholder.svg' />
+                                          <AvatarFallback className='bg-orange-500 text-sm'>YY</AvatarFallback>
+                                      </Avatar>
+                                  </div>
+                                  <div className='flex-1 rounded-md bg-nested-background p-4'>
+                                      <div className='flex items-center space-x-2'>
+                                          <Link href='#' className='text-sm font-medium hover:text-blue-400'>
+                                              {comment.name}
+                                          </Link>
+                                          <span className='text-xs text-zinc-500'>4 hours ago</span>
+                                      </div>
+                                      <p className='text-sm text-zinc-300'>useful</p>
+                                  </div>
+                              </div>
+                          </div>
+                      ))
+                    : null}
             </CardContent>
             <CardFooter>
                 <Button variant='ghost' className='ml-8 text-secondary-foreground hover:text-foreground'>

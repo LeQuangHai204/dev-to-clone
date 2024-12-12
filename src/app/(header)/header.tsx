@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import Image from 'next/image';
 
 import SearchBar from '~/templates/searchbar';
-
 import { Button } from '~/components/ui/button';
 import { BellIcon, SearchIcon } from '~/components/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <div className='h-14 w-full bg-secondary-background'>
             <div className='sticky top-0 z-50 mx-auto flex max-w-display justify-between px-4 py-2'>
-                <div className='flex basis-1/2 gap-x-4'>
+                <Link className='flex basis-1/2 gap-x-4' href='/'>
                     <Image
                         height={40}
                         width={50}
@@ -19,7 +19,7 @@ const Header = () => {
                         alt='DEV Community'
                     />
                     <SearchBar className='grow' placeholder='Search ...' LeftIcon={SearchIcon} />
-                </div>
+                </Link>
                 <div className='mr-4 flex gap-x-3'>
                     <Button variant='primary' className='h-full'>
                         Create Post

@@ -23,7 +23,7 @@ const SearchIcon = ({ className, size = '1.5rem' }: IconProps) => (
     </svg>
 );
 
-const MeatballsMenuIcon = ({ className, size = '2rem' }: IconProps) => (
+const MeatballsMenuIcon = ({ className, size = '1.5rem' }: IconProps) => (
     <svg className={className} width={size} height={size} fill='currentColor'>
         <g transform={`scale(${parseFloat(size) / 1.5})`}>
             <path d='M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z' />
