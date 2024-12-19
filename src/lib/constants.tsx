@@ -336,4 +336,52 @@ const tempNews = [
     },
 ];
 
-export { leftSidebarData, rightSidebarData, tempNews };
+const profileNavigationData = [
+    {
+        title: 'Le Quang Hai',
+        items: [
+            {
+                title: 'Home',
+                url: '#',
+                icon: HomeIcon,
+            },
+            {
+                title: 'Dev++',
+                url: '#',
+                icon: PlusPlusIcon,
+            },
+            {
+                title: 'Reading List',
+                url: '#',
+                icon: DrawerIcon,
+            },
+            {
+                title: 'Podcasts',
+                url: '#',
+                icon: MicrophoneIcon,
+            },
+        ],
+    },
+    {
+        title: 'Other',
+        items: [
+            {
+                title: 'Code of Conduct',
+                url: '#',
+                icon: ThumbsUpIcon,
+            },
+            {
+                title: 'Privacy Policy',
+                url: '#',
+                icon: FaceIcon,
+            },
+            {
+                title: 'Terms of Use',
+                url: '#',
+                icon: EyesIcon,
+            },
+        ],
+    },
+];
+
+export { leftSidebarData, rightSidebarData, profileNavigationData, tempNews };

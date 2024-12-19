@@ -4,8 +4,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { me } from './constants';
 import { MeatballsMenuIcon, LocationIcon, CakeIcon, RedirectIcon } from '~/components/icons';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
-import Article from '~/templates/article';
-import { tempNews } from '~/lib/constants';
+import NewsFeed from '~/templates/newsfeed';
+import { rightSidebarData, tempNews } from '~/lib/constants';
+import ContentSidebar from '~/templates/content-sidebar';
 
 const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }> }) => {
     const username = await params;
@@ -97,12 +98,8 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                 </Card>
 
                 <div className='flex w-full gap-x-4'>
-                    <div className='basis-1/3 bg-red-500'></div>
-                    <div className='basis-2/3 bg-green-500'>
-                        {tempNews.map((article, index) => (
-                            <Article key={index} data={article} />
-                        ))}
-                    </div>
+                    <ContentSidebar className='basis-1/3 bg-red-500' data={rightSidebarData} />
+                    <NewsFeed data={tempNews} />
                 </div>
             </div>
         </div>

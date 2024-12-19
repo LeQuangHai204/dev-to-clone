@@ -1,13 +1,20 @@
 'use client';
 import { useState } from 'react';
 
-import Article from '~/templates/article';
+import NewsFeed from '~/templates/newsfeed';
 import SearchBar from '~/templates/searchbar';
 import { Button } from '~/components/ui/button';
 import { MeatballsMenuIcon } from '~/components/icons';
 
-import { SearchIcon } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '~/components/ui/dropdown-menu';
 
 const Content = ({
     className,
@@ -48,18 +55,39 @@ const Content = ({
                         Following
                     </Button>
                 </div>
-                <Popover>
-                    <PopoverTrigger className='aspect-square'>
-                        <MeatballsMenuIcon className='mx-auto text-secondary-foreground hover:text-foreground' />
-                    </PopoverTrigger>
-                    <PopoverContent>
-                        <SearchIcon />
-                    </PopoverContent>
-                </Popover>
+                <DropdownMenu>
+                    <DropdownMenuTrigger className='hover:cursor-pointer' asChild>
+                        <div className='flex aspect-square h-full w-auto items-center justify-center'>
+                            <MeatballsMenuIcon className='text-secondary-foreground hover:text-foreground' />
+                        </div>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className='w-64 bg-secondary-background p-0' align='end'>
+                        <DropdownMenuLabel className='text-bright-foreground p-2 text-base hover:text-purplyblue-700'>
+                            Relevant
+                        </DropdownMenuLabel>
+                        <DropdownMenuSeparator className='m-1 p-px' />
+                        <DropdownMenuGroup>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-purplyblue-700'>
+                                Top this Week
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-purplyblue-700'>
+                                Top this Month
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-purplyblue-700'>
+                                Top this Year
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-purplyblue-700'>
+                                Top this Infinity
+                            </DropdownMenuItem>
+                        </DropdownMenuGroup>
+                        <DropdownMenuSeparator className='mx-2 my-1 p-px' />
+                        <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-purplyblue-700'>
+                            Latest
+                        </DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
             </div>
-            {data.map((article, index) => (
-                <Article key={index} data={article} />
-            ))}
+            <NewsFeed data={data} />
         </div>
     );
 };

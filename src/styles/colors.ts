@@ -3,6 +3,7 @@ const colors = {
     'secondary-background': 'hsl(var(--secondary-background))',
     'nested-background': 'hsl(var(--nested-background))',
     foreground: 'hsl(var(--foreground))',
+    'primary-foreground': 'hsl(var(--primary-foreground))',
     'secondary-foreground': 'hsl(var(--secondary-foreground))',
     purplyblue: {
         200: 'hsl(229.66deg 93.55% 81.76%)',
