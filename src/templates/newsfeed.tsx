@@ -36,7 +36,7 @@ const NewsFeed = ({
                         <div>
                             <div className='flex items-center space-x-1'>
                                 <Popover>
-                                    <PopoverTrigger>
+                                    <PopoverTrigger asChild>
                                         <span className='text-sm font-normal text-foreground'>Ismail Kamil</span>
                                     </PopoverTrigger>
                                     <PopoverContent>

@@ -57,9 +57,13 @@ const Content = ({
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger className='hover:cursor-pointer' asChild>
-                        <div className='flex aspect-square h-full w-auto items-center justify-center'>
-                            <MeatballsMenuIcon className='text-secondary-foreground hover:text-foreground' />
-                        </div>
+                        <Button
+                            className='h-full hover:bg-secondary-background hover:text-white'
+                            size='icon'
+                            variant='ghost'
+                        >
+                            <MeatballsMenuIcon />
+                        </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className='w-64 bg-secondary-background p-0' align='end'>
                         <DropdownMenuLabel className='text-bright-foreground p-2 text-base hover:text-purplyblue-700'>

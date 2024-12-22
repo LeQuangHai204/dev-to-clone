@@ -1,10 +1,10 @@
 // import { auth } from '~/server/auth';
 // import { api } from '~/trpc/server';
 
-import NavigationSidebar from '~/templates/navigation-sidebar';
-import ContentSidebar from '~/templates/content-sidebar';
-import { leftSidebarData, rightSidebarData, tempNews } from '~/lib/constants';
+import NavSidebar from '~/templates/nav-sidebar';
+import InfoSidebar from '~/templates/info-sidebar';
 
+import { leftSidebarActions, rightSidebarData, tempNews } from './constants';
 import Content from './content';
 
 const HomePage = async () => {
@@ -16,10 +16,10 @@ const HomePage = async () => {
     // }
 
     return (
-        <div className='mx-auto flex w-full max-w-display gap-x-3 p-4'>
-            <NavigationSidebar className='min-w-60' data={leftSidebarData} />
+        <div className='mx-auto flex w-full max-w-display gap-3 p-4'>
+            <NavSidebar className='min-w-60' data={leftSidebarActions} />
             <Content className='flex basis-full flex-col gap-2' data={tempNews} />
-            <ContentSidebar className='min-w-60 basis-1/2' data={rightSidebarData} />
+            <InfoSidebar className='min-w-60 basis-1/2' data={rightSidebarData} />
         </div>
     );
 };

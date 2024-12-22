@@ -17,7 +17,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
     <html lang='en' className={`${GeistSans.variable}`}>
         <body>
             <TRPCReactProvider>
-                <AppThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
+                <AppThemeProvider attribute='class' defaultTheme='dark'>
                     <SidebarProvider>{children}</SidebarProvider>
                 </AppThemeProvider>
             </TRPCReactProvider>

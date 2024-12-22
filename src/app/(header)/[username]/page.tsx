@@ -1,12 +1,14 @@
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader } from '~/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { me } from './constants';
 import { MeatballsMenuIcon, LocationIcon, CakeIcon, RedirectIcon } from '~/components/icons';
-import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
+
 import NewsFeed from '~/templates/newsfeed';
-import { rightSidebarData, tempNews } from '~/lib/constants';
-import ContentSidebar from '~/templates/content-sidebar';
+import InfoSidebar from '~/templates/info-sidebar';
+import DropdownMenuWrapper from '~/templates/dropdown';
+
+import { rightSidebarData, tempNews } from '~/app/(header)/constants';
+import { me } from './constants';
 
 const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }> }) => {
     const username = await params;
@@ -26,7 +28,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
     } = me;
 
     return (
-        <div className=''>
+        <div className='select-none'>
             <div className='flex h-32 w-full items-center justify-center' style={{ backgroundColor: color }}>
                 <Avatar className='z-10 h-28 w-28 border-4' style={{ borderColor: color }}>
                     <AvatarImage alt={name} src={image || '/placeholder.svg?height=128&width=128'} />
@@ -40,12 +42,28 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                             <Button className='h-full' variant='outline'>
                                 Follow
                             </Button>
-                            <Popover>
-                                <PopoverTrigger className='aspect-square rounded-md hover:bg-purplyblue-400/75'>
-                                    <MeatballsMenuIcon className='mx-auto text-secondary-foreground' />
-                                </PopoverTrigger>
-                                <PopoverContent>Hello</PopoverContent>
-                            </Popover>
+                            <DropdownMenuWrapper
+                                data={[
+                                    [
+                                        {
+                                            title: `Block @${name}`,
+                                            url: '/block',
+                                        },
+                                        {
+                                            title: 'Report Abuse',
+                                            url: '/report',
+                                        },
+                                    ],
+                                ]}
+                            >
+                                <Button
+                                    className='h-full hover:bg-nested-background hover:text-white'
+                                    size='icon'
+                                    variant='ghost'
+                                >
+                                    <MeatballsMenuIcon />
+                                </Button>
+                            </DropdownMenuWrapper>
                         </div>
                     </CardHeader>
                     <CardContent className='p-0'>
@@ -64,12 +82,13 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                                 variant='ghost'
                             >
                                 <CakeIcon />
-                                Joined on{' '}
-                                {new Date(created_at).toLocaleDateString('en-US', {
-                                    year: 'numeric',
-                                    month: 'short',
-                                    day: 'numeric',
-                                })}
+                                Joined on
+                                {' ' +
+                                    new Date(created_at).toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: 'numeric',
+                                    })}
                             </Button>
                             <Button
                                 className='px-3 py-1 text-sm text-secondary-foreground hover:text-purplyblue-200'
@@ -98,7 +117,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                 </Card>
 
                 <div className='flex w-full gap-x-4'>
-                    <ContentSidebar className='basis-1/3 bg-red-500' data={rightSidebarData} />
+                    <InfoSidebar className='basis-1/3 bg-red-500' data={rightSidebarData} />
                     <NewsFeed data={tempNews} />
                 </div>
             </div>

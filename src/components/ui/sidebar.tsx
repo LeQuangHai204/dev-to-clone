@@ -356,7 +356,7 @@ const SidebarContent = React.forwardRef<HTMLDivElement, React.ComponentProps<'di
             ref={ref}
             data-sidebar='content'
             className={cn(
-                'flex min-h-0 flex-1 flex-col overflow-auto group-data-[collapsible=icon]:overflow-hidden',
+                'flex min-h-0 flex-1 flex-col gap-4 overflow-auto group-data-[collapsible=icon]:overflow-hidden',
                 className
             )}
             {...props}
@@ -420,7 +420,7 @@ const SidebarGroupContent = React.forwardRef<HTMLDivElement, React.ComponentProp
 SidebarGroupContent.displayName = 'SidebarGroupContent';
 
 const SidebarMenu = React.forwardRef<HTMLUListElement, React.ComponentProps<'ul'>>(({ className, ...props }, ref) => (
-    <ul ref={ref} data-sidebar='menu' className={cn('flex w-full min-w-0 flex-col gap-1', className)} {...props} />
+    <ul ref={ref} data-sidebar='menu' className={cn('flex w-full min-w-0 flex-col', className)} {...props} />
 ));
 SidebarMenu.displayName = 'SidebarMenu';
 

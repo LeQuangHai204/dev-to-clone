@@ -27,7 +27,13 @@ export default function SearchBar({
                     <LeftIcon />
                 </Button>
             ) : null}
-            <Input className='px-2' variant='square' type='text' placeholder={placeholder} area-label={areaLabel} />
+            <Input
+                className='px-2 text-white placeholder-gray-500'
+                variant='square'
+                type='text'
+                placeholder={placeholder}
+                area-label={areaLabel}
+            />
             {RightIcon ? (
                 <Button className='h-full hover:bg-purplyblue-400/75' variant='ghost' size='icon'>
                     <RightIcon />
