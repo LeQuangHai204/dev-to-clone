@@ -19,10 +19,8 @@ const Header = () => {
                     <SearchBar className='grow' placeholder='Search ...' LeftIcon={SearchIcon} />
                 </div>
                 <div className='mr-4 flex gap-x-3'>
-                    <Button variant='primary' className='h-full'>
-                        Create Post
-                    </Button>
-                    <Button className='h-full hover:bg-purplyblue-400/75' variant='ghost' size='icon'>
+                    <Button variant='type1'>Create Post</Button>
+                    <Button variant='type2' size='icon'>
                         <BellIcon />
                     </Button>
                     <DropdownMenuWrapper

@@ -39,9 +39,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                 <Card className='mb-4 bg-secondary-background'>
                     <CardHeader className='mt-4'>
                         <div className='flex h-10 justify-end gap-x-2'>
-                            <Button className='h-full' variant='outline'>
-                                Follow
-                            </Button>
+                            <Button variant='type6'>Follow</Button>
                             <DropdownMenuWrapper
                                 data={[
                                     [
@@ -56,11 +54,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                                     ],
                                 ]}
                             >
-                                <Button
-                                    className='h-full hover:bg-nested-background hover:text-white'
-                                    size='icon'
-                                    variant='ghost'
-                                >
+                                <Button size='icon' variant='type7'>
                                     <MeatballsMenuIcon />
                                 </Button>
                             </DropdownMenuWrapper>
@@ -71,14 +65,14 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                         <div className='mx-auto mt-2 max-w-3xl text-center text-foreground'>{biography}</div>
                         <div className='flex justify-center p-4'>
                             <Button
-                                className='px-3 py-1 text-sm text-secondary-foreground hover:text-purplyblue-200'
+                                className='hover:text-brand-200 px-3 py-1 text-sm text-secondary-foreground'
                                 variant='ghost'
                             >
                                 <LocationIcon />
                                 {location}
                             </Button>
                             <Button
-                                className='px-3 py-1 text-sm text-secondary-foreground hover:text-purplyblue-200'
+                                className='hover:text-brand-200 px-3 py-1 text-sm text-secondary-foreground'
                                 variant='ghost'
                             >
                                 <CakeIcon />
@@ -91,7 +85,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                                     })}
                             </Button>
                             <Button
-                                className='px-3 py-1 text-sm text-secondary-foreground hover:text-purplyblue-200'
+                                className='hover:text-brand-200 px-3 py-1 text-sm text-secondary-foreground'
                                 variant='ghost'
                             >
                                 <RedirectIcon />
@@ -101,15 +95,15 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                         <div className='flex justify-evenly border-t p-6'>
                             <div className=''>
                                 <div className='text-center text-sm text-secondary-foreground'>Education</div>
-                                <div className='text-center text-white'>{education}</div>
+                                <div className='text-base-0 text-center'>{education}</div>
                             </div>
                             <div className=''>
                                 <div className='text-center text-sm text-secondary-foreground'>Pronouns</div>
-                                <div className='text-center text-white'>{pronouns}</div>
+                                <div className='text-base-0 text-center'>{pronouns}</div>
                             </div>
                             <div className=''>
                                 <div className='text-center text-sm text-secondary-foreground'>Work</div>
-                                <div className='text-center text-white'>{work}</div>
+                                <div className='text-base-0 text-center'>{work}</div>
                             </div>
                         </div>
                         <div></div>

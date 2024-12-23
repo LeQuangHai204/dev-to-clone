@@ -39,7 +39,7 @@ const NewsFeed = ({
                                     <PopoverTrigger asChild>
                                         <span className='text-sm font-normal text-foreground'>Ismail Kamil</span>
                                     </PopoverTrigger>
-                                    <PopoverContent>
+                                    <PopoverContent align='start'>
                                         <span>Hello</span>
                                     </PopoverContent>
                                 </Popover>
@@ -53,31 +53,27 @@ const NewsFeed = ({
                     </div>
                 </CardHeader>
                 <CardContent className='space-y-2'>
-                    <h1 className='pl-11 text-2xl font-bold hover:text-purplyblue-200'>{post.title}</h1>
+                    <h1 className='hover:text-brand-200 pl-11 text-2xl font-bold'>{post.title}</h1>
                     <div className='flex flex-wrap pl-10'>
-                        <Button className='text-foreground hover:text-white' variant='ghost' size='sm'>
+                        <Button className='hover:text-base-0 text-foreground' variant='ghost' size='sm'>
                             #webdev
                         </Button>
-                        <Button className='text-foreground hover:text-white' variant='ghost' size='sm'>
+                        <Button className='hover:text-base-0 text-foreground' variant='ghost' size='sm'>
                             #tutorial
                         </Button>
-                        <Button className='text-foreground hover:text-white' variant='ghost' size='sm'>
+                        <Button className='hover:text-base-0 text-foreground' variant='ghost' size='sm'>
                             #frontend
                         </Button>
                     </div>
                     {/* Reactions */}
                     <div className='flex items-center justify-between pl-10'>
                         <div className='space-x-2'>
-                            <Button
-                                variant='ghost'
-                                className='h-10 text-foreground hover:bg-nested-background hover:text-white'
-                                size='sm'
-                            >
+                            <Button variant='type8' size='sm'>
                                 {post.reactions_count} Reactions
                             </Button>
                             <Button
                                 variant='ghost'
-                                className='h-10 text-foreground hover:bg-nested-background hover:text-white'
+                                className='hover:text-base-0 h-10 text-foreground hover:bg-nested-background'
                                 size='sm'
                             >
                                 {post.comments_count} Comments
@@ -85,11 +81,7 @@ const NewsFeed = ({
                         </div>
                         <div className='flex items-center gap-2'>
                             <span className='text-xs text-secondary-foreground'>5 min read</span>
-                            <Button
-                                variant='ghost'
-                                size='icon'
-                                className='size-10 text-secondary-foreground hover:bg-purplyblue-400/75'
-                            >
+                            <Button className='size-10 text-secondary-foreground' variant='type2' size='icon'>
                                 <BookmarkIcon />
                             </Button>
                         </div>

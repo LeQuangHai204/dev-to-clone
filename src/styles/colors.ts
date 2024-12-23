@@ -5,12 +5,25 @@ const colors = {
     foreground: 'hsl(var(--foreground))',
     'primary-foreground': 'hsl(var(--primary-foreground))',
     'secondary-foreground': 'hsl(var(--secondary-foreground))',
-    purplyblue: {
+    brand: {
         200: 'hsl(229.66deg 93.55% 81.76%)',
         400: 'hsl(242.17deg 47.43% 34.31%)',
         600: 'hsl(234.45deg 89.47% 73.92%)',
         700: 'hsl(238.73deg 83.53% 66.67%)',
         800: 'hsl(243.4deg 75.36% 58.63%)',
+    },
+    base: {
+        1000: 'hsl(0deg 0% 3.53%)',
+        900: 'hsl(0deg 0% 14.12%)',
+        800: 'hsl(0deg 0% 24.31%)',
+        700: 'hsl(0deg 0% 34.12%)',
+        600: 'hsl(0deg 0% 44.31%)',
+        500: 'hsl(0deg 0% 54.12%)',
+        400: 'hsl(0deg 0% 63.92%)',
+        300: 'hsl(0deg 0% 74.12%)',
+        200: 'hsl(240deg 1.23% 84.12%)',
+        100: 'hsl(0deg 0% 93.73%)',
+        0: 'hsl(0deg 0% 97.65%)',
     },
     card: {
         DEFAULT: 'hsl(var(--card))',
