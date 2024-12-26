@@ -30,7 +30,7 @@ const InfoSidebar = ({
                 {data.map((block, index) => (
                     <SidebarGroup className='overflow-hidden rounded-md' key={index}>
                         {block.title ? (
-                            <SidebarGroupLabel className='mb-px bg-secondary-background p-4 text-xl'>
+                            <SidebarGroupLabel className='mb-px bg-base-900 p-4 text-xl'>
                                 {block.title}
                             </SidebarGroupLabel>
                         ) : null}
@@ -41,7 +41,7 @@ const InfoSidebar = ({
                                         <SidebarMenuButton className='group/item' size='fit' variant='secondary'>
                                             <Link href={item.url}>
                                                 {item.title}
-                                                <div className='mt-2 text-sm text-secondary-foreground group-hover/item:text-foreground'>
+                                                <div className='mt-2 text-sm text-base-400 group-hover/item:text-foreground'>
                                                     {item.commentCount} comments
                                                 </div>
                                             </Link>

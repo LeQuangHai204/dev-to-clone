@@ -41,8 +41,9 @@
         --sidebar-ring: 217.2 91.2% 59.8%;
     }
     .dark {
-        /* --background: 0 0% 3.9%; */
-        /* --foreground: 0 0% 98%; */
+        --background: 0 0% 3.9%;
+        --foreground: 0 0% 98%;
+        
         --card: 0 0% 3.9%;
         --card-foreground: 0 0% 98%;
         --popover: 0 0% 3.9%;
@@ -92,18 +93,17 @@
     :root {
         --display-width: 88rem;
         --profile-width: 62rem;
-
-        /* placeholder - only dark mode supported */
-        --secondary-background: 0 0% 83%;
-        --nested-background: 0 0% 92%;
     }
     .dark {
-        --background: 0 0% 0%;
-        --foreground: 0 0% 83%;
-        --bright-foreground: 0 0% 94%;
-        --secondary-foreground: 0 0% 64%;
-
-        --secondary-background: 0 0% 9%;
-        --nested-background: 0 0% 15%;
+        --base-1000: 0deg 0% 9%;
+        --base-900: 0deg 0% 14%;
+        --base-800: 0deg 0% 24%;
+        --base-700: 0deg 0% 34%;
+        --base-600: 0deg 0% 44%;
+        --base-500: 0deg 0% 54%;
+        --base-400: 0deg 0% 64%;
+        --base-300: 0deg 0% 74%;
+        --base-200: 240deg 1% 84%;
+        --base-100: 0deg 0% 94%;
     }
 }

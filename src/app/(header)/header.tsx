@@ -12,7 +12,7 @@ import { profileDropdownActions } from './constants';
 
 const Header = () => {
     return (
-        <div className='sticky top-0 z-50 h-14 w-full select-none border-b border-background bg-secondary-background'>
+        <div className='sticky top-0 z-50 h-14 w-full select-none border-b border-background bg-base-1000'>
             <div className='mx-auto flex max-w-display justify-between px-4 py-2'>
                 <div className='flex basis-1/2 gap-x-4'>
                     <Logo />
@@ -28,7 +28,7 @@ const Header = () => {
                         label={
                             <Link href='/me'>
                                 <div className='text-bright-foreground text-base'>Le Quang Hai</div>
-                                <div className='font-normal text-secondary-foreground'>@lequanghai204</div>
+                                <div className='font-normal text-base-400'>@lequanghai204</div>
                             </Link>
                         }
                         data={profileDropdownActions}

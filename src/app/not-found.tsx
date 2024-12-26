@@ -9,7 +9,7 @@ const NotFoundFallback = () => {
                 <span className='text-primary'>Page not found</span>
             </div>
             <Button asChild>
-                <Link className='text-secondary-background' href='/'>
+                <Link className='text-base-900' href='/'>
                     Back to Home
                 </Link>
             </Button>

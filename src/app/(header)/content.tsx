@@ -35,53 +35,53 @@ const Content = ({
 
     return (
         <div className={className}>
-            <div className='rounded-md bg-secondary-background p-2'>
+            <div className='rounded-md bg-base-900 p-2'>
                 <SearchBar placeholder="What's on your mind?" />
             </div>
             <div className='flex justify-between'>
                 <div>
                     <Button
-                        className='text-lg font-bold'
                         variant={activeButton === 'discover' ? 'type4' : 'type3'}
                         onClick={() => setActiveButton('discover')}
+                        size='sm'
                     >
                         Discover
                     </Button>
                     <Button
-                        className='text-lg font-normal'
                         variant={activeButton === 'following' ? 'type4' : 'type3'}
                         onClick={() => setActiveButton('following')}
+                        size='sm'
                     >
                         Following
                     </Button>
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button size='icon' variant='ghost'>
+                        <Button className='h-10 text-base-200 hover:text-foreground' size='icon'>
                             <MeatballsMenuIcon />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className='w-64 bg-secondary-background p-0' align='end'>
-                        <DropdownMenuLabel className='text-bright-foreground hover:text-brand-700 p-2 text-base'>
+                    <DropdownMenuContent className='w-64 bg-base-1000 p-0' align='end'>
+                        <DropdownMenuLabel className='text-bright-foreground p-2 text-base hover:text-brand-700'>
                             Relevant
                         </DropdownMenuLabel>
-                        <DropdownMenuSeparator className='m-1 p-px' />
+                        <DropdownMenuSeparator className='m-1 bg-base-800 pt-px' />
                         <DropdownMenuGroup>
-                            <DropdownMenuItem className='text-bright-foreground hover:text-brand-700 rounded-md p-2 font-normal hover:bg-background'>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
                                 Top this Week
                             </DropdownMenuItem>
-                            <DropdownMenuItem className='text-bright-foreground hover:text-brand-700 rounded-md p-2 font-normal hover:bg-background'>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
                                 Top this Month
                             </DropdownMenuItem>
-                            <DropdownMenuItem className='text-bright-foreground hover:text-brand-700 rounded-md p-2 font-normal hover:bg-background'>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
                                 Top this Year
                             </DropdownMenuItem>
-                            <DropdownMenuItem className='text-bright-foreground hover:text-brand-700 rounded-md p-2 font-normal hover:bg-background'>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
                                 Top this Infinity
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
-                        <DropdownMenuSeparator className='mx-2 my-1 p-px' />
-                        <DropdownMenuItem className='text-bright-foreground hover:text-brand-700 rounded-md p-2 font-normal hover:bg-background'>
+                        <DropdownMenuSeparator className='m-1 bg-base-800 pt-px' />
+                        <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
                             Latest
                         </DropdownMenuItem>
                     </DropdownMenuContent>

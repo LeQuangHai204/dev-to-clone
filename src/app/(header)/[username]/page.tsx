@@ -36,7 +36,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                 </Avatar>
             </div>
             <div className='relative -top-16 mx-auto flex max-w-profile flex-col'>
-                <Card className='mb-4 bg-secondary-background'>
+                <Card className='mb-4 bg-base-1000'>
                     <CardHeader className='mt-4'>
                         <div className='flex h-10 justify-end gap-x-2'>
                             <Button variant='type6'>Follow</Button>
@@ -54,27 +54,25 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                                     ],
                                 ]}
                             >
-                                <Button size='icon' variant='type7'>
+                                <Button
+                                    className='text-base-400 hover:bg-base-900 hover:text-foreground'
+                                    size='icon'
+                                    variant='type7'
+                                >
                                     <MeatballsMenuIcon />
                                 </Button>
                             </DropdownMenuWrapper>
                         </div>
                     </CardHeader>
                     <CardContent className='p-0'>
-                        <div className='text-center text-3xl font-bold'>{name}</div>
+                        <div className='text-center text-3xl font-bold text-white'>{name}</div>
                         <div className='mx-auto mt-2 max-w-3xl text-center text-foreground'>{biography}</div>
                         <div className='flex justify-center p-4'>
-                            <Button
-                                className='hover:text-brand-200 px-3 py-1 text-sm text-secondary-foreground'
-                                variant='ghost'
-                            >
+                            <Button className='px-3 py-1 text-sm text-base-400 hover:text-brand-200'>
                                 <LocationIcon />
                                 {location}
                             </Button>
-                            <Button
-                                className='hover:text-brand-200 px-3 py-1 text-sm text-secondary-foreground'
-                                variant='ghost'
-                            >
+                            <Button className='px-3 py-1 text-sm text-base-400 hover:text-brand-200'>
                                 <CakeIcon />
                                 Joined on
                                 {' ' +
@@ -84,26 +82,23 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                                         day: 'numeric',
                                     })}
                             </Button>
-                            <Button
-                                className='hover:text-brand-200 px-3 py-1 text-sm text-secondary-foreground'
-                                variant='ghost'
-                            >
+                            <Button className='px-3 py-1 text-sm text-base-400 hover:text-brand-200'>
                                 <RedirectIcon />
                                 {contact.website}
                             </Button>
                         </div>
                         <div className='flex justify-evenly border-t p-6'>
                             <div className=''>
-                                <div className='text-center text-sm text-secondary-foreground'>Education</div>
-                                <div className='text-base-0 text-center'>{education}</div>
+                                <div className='text-center text-sm text-base-400'>Education</div>
+                                <div className='text-center text-base-0'>{education}</div>
                             </div>
                             <div className=''>
-                                <div className='text-center text-sm text-secondary-foreground'>Pronouns</div>
-                                <div className='text-base-0 text-center'>{pronouns}</div>
+                                <div className='text-center text-sm text-base-400'>Pronouns</div>
+                                <div className='text-center text-base-0'>{pronouns}</div>
                             </div>
                             <div className=''>
-                                <div className='text-center text-sm text-secondary-foreground'>Work</div>
-                                <div className='text-base-0 text-center'>{work}</div>
+                                <div className='text-center text-sm text-base-400'>Work</div>
+                                <div className='text-center text-base-0'>{work}</div>
                             </div>
                         </div>
                         <div></div>

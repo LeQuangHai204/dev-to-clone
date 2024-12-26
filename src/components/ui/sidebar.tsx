@@ -229,7 +229,7 @@ const Sidebar = React.forwardRef<
                         data-sidebar='sidebar'
                         className={cn(
                             'flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow',
-                            theme === 'ghost' ? 'bg-background' : 'bg-sidebar'
+                            theme === 'ghost' ? 'bg-base-1000' : 'bg-sidebar'
                         )}
                     >
                         {children}
@@ -249,7 +249,6 @@ const SidebarTrigger = React.forwardRef<React.ElementRef<typeof Button>, React.C
             <Button
                 ref={ref}
                 data-sidebar='trigger'
-                variant='ghost'
                 size='icon'
                 className={cn('h-7 w-7', className)}
                 onClick={(event) => {
@@ -299,7 +298,7 @@ const SidebarInset = React.forwardRef<HTMLDivElement, React.ComponentProps<'main
         <main
             ref={ref}
             className={cn(
-                'relative flex min-h-svh flex-1 flex-col bg-background',
+                'relative flex min-h-svh flex-1 flex-col bg-base-1000',
                 'peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow',
                 className
             )}
@@ -316,7 +315,7 @@ const SidebarInput = React.forwardRef<React.ElementRef<typeof Input>, React.Comp
                 ref={ref}
                 data-sidebar='input'
                 className={cn(
-                    'h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring',
+                    'h-8 w-full bg-base-1000 shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring',
                     className
                 )}
                 {...props}
@@ -379,7 +378,7 @@ const SidebarGroupLabel = React.forwardRef<HTMLDivElement, React.ComponentProps<
                 ref={ref}
                 data-sidebar='group-label'
                 className={cn(
-                    'text-base-0 flex shrink-0 items-center px-2 text-lg font-bold outline-none ring-sidebar-ring transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
+                    'flex shrink-0 items-center px-2 text-lg font-bold text-base-0 outline-none ring-sidebar-ring transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
                     'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
                     className
                 )}
@@ -436,10 +435,10 @@ const sidebarMenuButtonVariants = cva(
             variant: {
                 default: 'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
                 outline:
-                    'bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
+                    'bg-base-1000 shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
                 primary:
-                    'hover:bg-brand-400/75 hover:text-brand-200 gap-2 rounded-md px-2 text-foreground hover:underline',
-                secondary: 'hover:text-brand-200 bg-secondary-background p-4',
+                    'gap-2 rounded-md px-2 text-foreground hover:bg-brand-400/75 hover:text-brand-200 hover:underline',
+                secondary: 'bg-base-900 p-4 hover:text-brand-200',
             },
             size: {
                 default: 'h-8 text-sm',
