@@ -18,7 +18,7 @@ export default function SearchBar({
     return (
         <div
             className={cn(
-                'flex rounded-md border border-base-800 bg-background focus-within:ring-2 focus-within:ring-brand-600 hover:border-base-700',
+                'flex h-full rounded-md border border-base-700 bg-background focus-within:ring-2 focus-within:ring-brand-600 hover:border-base-700',
                 className
             )}
         >
@@ -28,7 +28,7 @@ export default function SearchBar({
                 </Button>
             ) : null}
             <Input
-                className='px-2 text-foreground placeholder-base-800'
+                className='h-full px-2 text-foreground placeholder-base-700'
                 variant='square'
                 type='text'
                 placeholder={placeholder}

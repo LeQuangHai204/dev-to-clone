@@ -35,10 +35,10 @@ const Content = ({
 
     return (
         <div className={className}>
-            <div className='rounded-md bg-base-900 p-2'>
+            <div className='h-14 rounded-md bg-base-1000 p-2'>
                 <SearchBar placeholder="What's on your mind?" />
             </div>
-            <div className='flex justify-between'>
+            <div className='flex h-9 justify-between'>
                 <div>
                     <Button
                         variant={activeButton === 'discover' ? 'type4' : 'type3'}
@@ -57,7 +57,7 @@ const Content = ({
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button className='h-10 text-base-200 hover:text-foreground' size='icon'>
+                        <Button className='text-base-200 hover:text-foreground' size='icon'>
                             <MeatballsMenuIcon />
                         </Button>
                     </DropdownMenuTrigger>

@@ -5,25 +5,25 @@ type Icon = React.FC<{
     size?: string;
 }>;
 
-const BookmarkIcon: Icon = ({ className, size = '1.5rem' }) => (
+const BookmarkIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
         <path d='M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z' />
     </svg>
 );
 
-const BellIcon: Icon = ({ className, size = '1.5rem' }) => (
+const BellIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
         <path d='M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z' />
     </svg>
 );
 
-const SearchIcon: Icon = ({ className, size = '1.5rem' }) => (
+const SearchIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
         <path d='M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z' />
     </svg>
 );
 
-const MeatballsMenuIcon: Icon = ({ className, size = '1.5rem' }) => (
+const MeatballsMenuIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg
         className={className}
         width={size}
@@ -37,7 +37,7 @@ const MeatballsMenuIcon: Icon = ({ className, size = '1.5rem' }) => (
     </svg>
 );
 
-const HomeIcon: Icon = ({ className, size = '1.5rem' }) => (
+const HomeIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 36 36'>
         <path
             fill='#A0041E'
@@ -59,13 +59,13 @@ const HomeIcon: Icon = ({ className, size = '1.5rem' }) => (
     </svg>
 );
 
-const PlusPlusIcon: Icon = ({ className, size = '1.5rem' }) => (
+const PlusPlusIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg width={size} height={size} fill='#3b49df' viewBox='0 0 1600 1024'>
         <path d='M305 953 c-42 -22 -64 -43 -83 -78 -14 -25 -18 -76 -22 -305 -7 -313 -12 -336 -96 -450 -24 -33 -44 -62 -44 -65 0 -3 318 -4 708 -3 l707 3 47 27 c32 20 52 41 67 72 21 43 22 54 19 374 l-3 330 -31 39 c-61 76 -30 73 -669 73 -500 -1 -574 -3 -600 -17z m405 -278 l0 -84 83 -3 82 -3 0 -75 0 -75 -82 -3 -83 -3 0 -84 0 -85 -75 0 -75 0 0 85 0 85 -75 0 c-41 0 -75 3 -75 8 0 4 8 39 18 77 l18 70 57 3 57 3 0 84 0 85 75 0 75 0 0 -85z m578 -2 l3 -82 82 -3 82 -3 0 -75 0 -75 -82 -3 -82 -3 -3 -82 -3 -82 -75 0 -75 0 -3 83 -3 82 -79 0 -80 0 0 80 0 80 80 0 80 0 0 78 c0 43 3 82 7 86 4 4 39 5 78 4 l70 -3 3 -82z' />
     </svg>
 );
 
-const DrawerIcon: Icon = ({ className, size = '1.5rem' }) => (
+const DrawerIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} viewBox='0 0 42 42'>
         <path
             fill='#67757F'
@@ -84,7 +84,7 @@ const DrawerIcon: Icon = ({ className, size = '1.5rem' }) => (
     </svg>
 );
 
-const MicrophoneIcon: Icon = ({ className, size = '1.5rem' }) => (
+const MicrophoneIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} viewBox='0 0 40 40'>
         <path
             fill='#292F33'
@@ -114,7 +114,7 @@ const MicrophoneIcon: Icon = ({ className, size = '1.5rem' }) => (
     </svg>
 );
 
-const ThumbsUpIcon: Icon = ({ className, size = '1.5rem' }) => (
+const ThumbsUpIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} viewBox='0 0 42 42'>
         <path
             fill='#FFDB5E'
@@ -127,7 +127,7 @@ const ThumbsUpIcon: Icon = ({ className, size = '1.5rem' }) => (
     </svg>
 );
 
-const FaceIcon: Icon = ({ className, size = '1.5rem' }) => (
+const FaceIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} viewBox='0 0 36 36'>
         <circle fill='#FFCC4D' cx='18' cy='18' r='18' />
         <path
@@ -153,7 +153,7 @@ const FaceIcon: Icon = ({ className, size = '1.5rem' }) => (
     </svg>
 );
 
-const EyesIcon: Icon = ({ className, size = '1.5rem' }) => (
+const EyesIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} viewBox='0 0 36 36'>
         <ellipse fill='#F5F8FA' cx='8.828' cy='18' rx='7.953' ry='13.281'></ellipse>
         <path
@@ -174,19 +174,19 @@ const EyesIcon: Icon = ({ className, size = '1.5rem' }) => (
     </svg>
 );
 
-const LocationIcon: Icon = ({ className, size = '1.5rem' }) => (
+const LocationIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
         <path d='M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1112.728 0zM12 13a2 2 0 100-4 2 2 0 000 4z' />
     </svg>
 );
 
-const CakeIcon: Icon = ({ className, size = '1.5rem' }) => (
+const CakeIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
         <path d='M8 6v3.999h3V6h2v3.999h3V6h2v3.999L19 10a3 3 0 012.995 2.824L22 13v1c0 1.014-.377 1.94-.999 2.645L21 21a1 1 0 01-1 1H4a1 1 0 01-1-1v-4.36a4.025 4.025 0 01-.972-2.182l-.022-.253L2 14v-1a3 3 0 012.824-2.995L5 10l1-.001V6h2zm11 6H5a1 1 0 00-.993.883L4 13v.971l.003.147a2 2 0 003.303 1.4c.363-.312.602-.744.674-1.218l.015-.153.005-.176c.036-1.248 1.827-1.293 1.989-.134l.01.134.004.147a2 2 0 003.992.031l.012-.282c.124-1.156 1.862-1.156 1.986 0l.012.282a2 2 0 003.99 0L20 14v-1a1 1 0 00-.883-.993L19 12zM7 1c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 11-2.898-.776C5.85 2.002 7 2.5 7 1zm5 0c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 01-2.898-.776C10.85 2.002 12 2.5 12 1zm5 0c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 01-2.898-.776C15.85 2.002 17 2.5 17 1z' />
     </svg>
 );
 
-const RedirectIcon: Icon = ({ className, size = '1.5rem' }) => (
+const RedirectIcon: Icon = ({ className, size = '1.4rem' }) => (
     <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
         <path d='M10.667 8v1.333H7.333v7.334h7.334v-3.334H16v4a.666.666 0 01-.667.667H6.667A.666.666 0 016 17.333V8.667A.667.667 0 016.667 8h4zM18 6v5.333h-1.333V8.275l-5.196 5.196-.942-.942 5.194-5.196h-3.056V6H18z' />
     </svg>

@@ -15,11 +15,13 @@ const Header = () => {
         <div className='sticky top-0 z-50 h-14 w-full select-none border-b border-background bg-base-1000'>
             <div className='mx-auto flex max-w-display justify-between px-4 py-2'>
                 <div className='flex basis-1/2 gap-x-4'>
-                    <Logo />
+                    <Logo className='flex-none' />
                     <SearchBar className='grow' placeholder='Search ...' LeftIcon={SearchIcon} />
                 </div>
                 <div className='mr-4 flex gap-x-3'>
-                    <Button variant='type1'>Create Post</Button>
+                    <Button variant='type1' size='md' asChild>
+                        <Link href='/compose'>Create Post</Link>
+                    </Button>
                     <Button variant='type2' size='icon'>
                         <BellIcon />
                     </Button>
@@ -33,9 +35,9 @@ const Header = () => {
                         }
                         data={profileDropdownActions}
                     >
-                        <Avatar>
+                        <Avatar className='my-auto'>
                             <AvatarImage src='https://github.com/shadnotcn.png' />
-                            <AvatarFallback className='bg-orange-500 text-lg text-blue-900'>CB</AvatarFallback>
+                            <AvatarFallback className='bg-green-500 font-medium text-white'>H</AvatarFallback>
                         </Avatar>
                     </DropdownMenuWrapper>
                 </div>

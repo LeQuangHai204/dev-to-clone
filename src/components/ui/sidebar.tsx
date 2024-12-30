@@ -378,7 +378,7 @@ const SidebarGroupLabel = React.forwardRef<HTMLDivElement, React.ComponentProps<
                 ref={ref}
                 data-sidebar='group-label'
                 className={cn(
-                    'flex shrink-0 items-center px-2 text-lg font-bold text-base-0 outline-none ring-sidebar-ring transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
+                    'text-base-0 flex shrink-0 items-center px-2 text-lg font-bold outline-none ring-sidebar-ring transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
                     'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
                     className
                 )}
@@ -438,7 +438,7 @@ const sidebarMenuButtonVariants = cva(
                     'bg-base-1000 shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
                 primary:
                     'gap-2 rounded-md px-2 text-foreground hover:bg-brand-400/75 hover:text-brand-200 hover:underline',
-                secondary: 'bg-base-900 p-4 hover:text-brand-200',
+                secondary: 'bg-base-1000 p-4 hover:text-brand-200',
             },
             size: {
                 default: 'h-8 text-sm',

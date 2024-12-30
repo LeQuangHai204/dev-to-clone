@@ -41,7 +41,7 @@
         --sidebar-ring: 217.2 91.2% 59.8%;
     }
     .dark {
-        --background: 0 0% 3.9%;
+        --background: 0 0% 0%;
         --foreground: 0 0% 98%;
         
         --card: 0 0% 3.9%;
@@ -91,7 +91,7 @@
 /* Custom parameter configuration */
 @layer base {
     :root {
-        --display-width: 88rem;
+        --display-width: 1380px;
         --profile-width: 62rem;
     }
     .dark {
@@ -105,5 +105,11 @@
         --base-300: 0deg 0% 74%;
         --base-200: 240deg 1% 84%;
         --base-100: 0deg 0% 94%;
+    }
+}
+
+@layer components {
+    .prose {
+        color: inherit;
     }
 }

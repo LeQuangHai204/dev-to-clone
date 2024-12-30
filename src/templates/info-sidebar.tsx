@@ -30,7 +30,7 @@ const InfoSidebar = ({
                 {data.map((block, index) => (
                     <SidebarGroup className='overflow-hidden rounded-md' key={index}>
                         {block.title ? (
-                            <SidebarGroupLabel className='mb-px bg-base-900 p-4 text-xl'>
+                            <SidebarGroupLabel className='mb-px bg-base-1000 p-4 text-xl'>
                                 {block.title}
                             </SidebarGroupLabel>
                         ) : null}

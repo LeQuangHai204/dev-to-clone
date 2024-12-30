@@ -26,7 +26,7 @@ const NewsFeed = ({
 }) => (
     <div className='flex w-full flex-col gap-y-2'>
         {data.map((post, index) => (
-            <Card key={index} className={cn('w-full cursor-pointer bg-base-900', className)}>
+            <Card key={index} className={cn('w-full cursor-pointer bg-base-1000', className)}>
                 <CardHeader>
                     <div className='flex items-center gap-2'>
                         <Avatar className='h-8 w-8'>
@@ -55,13 +55,13 @@ const NewsFeed = ({
                 <CardContent className='space-y-2'>
                     <h1 className='pl-11 text-2xl font-bold hover:text-brand-200'>{post.title}</h1>
                     <div className='flex flex-wrap pl-10'>
-                        <Button className='text-foreground hover:text-base-0' size='sm'>
+                        <Button className='hover:text-base-0 text-foreground' size='sm'>
                             #webdev
                         </Button>
-                        <Button className='text-foreground hover:text-base-0' size='sm'>
+                        <Button className='hover:text-base-0 text-foreground' size='sm'>
                             #tutorial
                         </Button>
-                        <Button className='text-foreground hover:text-base-0' size='sm'>
+                        <Button className='hover:text-base-0 text-foreground' size='sm'>
                             #frontend
                         </Button>
                     </div>
@@ -71,7 +71,7 @@ const NewsFeed = ({
                             <Button variant='type8' size='sm'>
                                 {post.reactions_count} Reactions
                             </Button>
-                            <Button className='h-10 text-foreground hover:bg-base-100 hover:text-base-0' size='sm'>
+                            <Button className='hover:text-base-0 h-10 text-foreground hover:bg-base-100' size='sm'>
                                 {post.comments_count} Comments
                             </Button>
                         </div>
