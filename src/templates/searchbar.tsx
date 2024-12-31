@@ -18,7 +18,7 @@ export default function SearchBar({
     return (
         <div
             className={cn(
-                'flex h-full rounded-md border border-base-700 bg-background focus-within:ring-2 focus-within:ring-brand-600 hover:border-base-700',
+                'flex h-full rounded-md border border-base-700 bg-background focus-within:ring-2 focus-within:ring-brand-600 hover:border-base-600',
                 className
             )}
         >

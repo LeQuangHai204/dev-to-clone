@@ -27,6 +27,8 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
         organizations,
     } = me;
 
+    const isMe = true;
+
     return (
         <div className='select-none'>
             <div className='flex h-32 w-full items-center justify-center' style={{ backgroundColor: color }}>
@@ -39,29 +41,39 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                 <Card className='mb-4 bg-base-1000'>
                     <CardHeader className='mt-4'>
                         <div className='flex h-10 justify-end gap-x-2'>
-                            <Button variant='type6'>Follow</Button>
-                            <DropdownMenuWrapper
-                                data={[
-                                    [
-                                        {
-                                            title: `Block @${name}`,
-                                            url: '/block',
-                                        },
-                                        {
-                                            title: 'Report Abuse',
-                                            url: '/report',
-                                        },
-                                    ],
-                                ]}
-                            >
-                                <Button
-                                    className='text-base-400 hover:bg-base-900 hover:text-foreground'
-                                    size='icon'
-                                    variant='type7'
-                                >
-                                    <MeatballsMenuIcon />
+                            {isMe ? (
+                                <Button className='al' variant='type6' size='md'>
+                                    Edit Profile
                                 </Button>
-                            </DropdownMenuWrapper>
+                            ) : (
+                                <>
+                                    <Button variant='type6' size='md'>
+                                        Follow
+                                    </Button>
+                                    <DropdownMenuWrapper
+                                        data={[
+                                            [
+                                                {
+                                                    title: `Block @${name}`,
+                                                    url: '/block',
+                                                },
+                                                {
+                                                    title: 'Report Abuse',
+                                                    url: '/report',
+                                                },
+                                            ],
+                                        ]}
+                                    >
+                                        <Button
+                                            className='text-base-400 hover:bg-base-900 hover:text-foreground'
+                                            size='icon'
+                                            variant='type7'
+                                        >
+                                            <MeatballsMenuIcon />
+                                        </Button>
+                                    </DropdownMenuWrapper>
+                                </>
+                            )}
                         </div>
                     </CardHeader>
                     <CardContent className='p-0'>
@@ -90,15 +102,15 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                         <div className='flex justify-evenly border-t p-6'>
                             <div className=''>
                                 <div className='text-center text-sm text-base-400'>Education</div>
-                                <div className='text-center text-base-0'>{education}</div>
+                                <div className='text-base-0 text-center'>{education}</div>
                             </div>
                             <div className=''>
                                 <div className='text-center text-sm text-base-400'>Pronouns</div>
-                                <div className='text-center text-base-0'>{pronouns}</div>
+                                <div className='text-base-0 text-center'>{pronouns}</div>
                             </div>
                             <div className=''>
                                 <div className='text-center text-sm text-base-400'>Work</div>
-                                <div className='text-center text-base-0'>{work}</div>
+                                <div className='text-base-0 text-center'>{work}</div>
                             </div>
                         </div>
                         <div></div>

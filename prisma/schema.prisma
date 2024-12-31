@@ -41,8 +41,8 @@ model Session {
     id           String   @id @default(cuid())
     sessionToken String   @unique
     expires      DateTime
-    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId       String
+    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
@@ -57,6 +57,7 @@ model User {
 
     // User Profile
     username  String? @unique
+    imageUrl  String?
     color     String? @default("#E0A64E")
     biography String?
     location  String?
@@ -68,22 +69,19 @@ model User {
     articles      Article[] // One-to-many relationship with Article
     comments      Comment[] // One-to-many relationship with Comment
     organizations Organization[] @relation("UserOrganizations") // Many-to-many with Organization
-
-    // Profile information (can be denormalized for performance)
-    profileImageUrl String? // Redundant for performance
 }
 
 model Organization {
-    id              String    @id @default(cuid())
-    name            String
-    profileImageUrl String? // URL for organization profile image
-    description     String?
-    users           User[]    @relation("UserOrganizations") // Many-to-many relationship with User
-    articles        Article[] // One-to-many relationship with Articles
+    id          String  @id @default(cuid())
+    name        String
+    imageUrl    String? // URL for organization profile image
+    description String?
 
-    // Optional organization-specific fields
-    website      String?
-    contactEmail String?
+    users    User[]    @relation("UserOrganizations") // Many-to-many relationship with User
+    articles Article[] // One-to-many relationship with Articles
+
+    website String?
+    email   String?
 }
 
 model VerificationToken {
@@ -97,22 +95,22 @@ model VerificationToken {
 
 // ********** Custom tables **********
 model Article {
-    id                       String   @id @default(cuid())
-    title                    String
-    path                     String   @unique // Ensures article paths are unique
-    userId                   String // Foreign key to User
-    organizationId           String? // Foreign key to Organization (optional)
-    commentsCount            Int      @default(0) // Count of comments for this article
-    reactionsCount           Int      @default(0) // Reactions count
-    publishedAt              DateTime @default(now())
-    editedAt                 DateTime
-    userName                 String // Redundant, to avoid joining user table for article owner
-    userProfileImageUrl      String // Redundant, to avoid joining user table for article owner
-    organizationName         String? // Redundant, for articles belonging to organizations
-    organizationProfileImage String? // Redundant, for articles belonging to organizations
-    mainImage                String // Main image of the article
-    tagList                  String[] // Array of tags related to the article
-    bodyPreview              String? // Preview of the article body for quick display
+    id                   String   @id @default(cuid())
+    title                String
+    path                 String   @unique // Ensures article paths are unique
+    userId               String // Foreign key to User
+    organizationId       String? // Foreign key to Organization
+    commentsCount        Int      @default(0) // Count of comments for this article
+    reactionsCount       Int      @default(0) // Reactions count
+    publishedAt          DateTime @default(now())
+    editedAt             DateTime
+    userName             String // Redundant, to avoid joining user table for article owner
+    userImageUrl         String // Redundant, to avoid joining user table for article owner
+    organizationName     String? // Redundant, for articles belonging to organizations
+    organizationImageUrl String? // Redundant, for articles belonging to organizations
+    imageUrl             String // Main image of the article
+    tagList              String[] // Array of tags related to the article
+    content              String   @db.Text // Full content
 
     user         User          @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to User
     organization Organization? @relation(fields: [organizationId], references: [id]) // Optional relation to Organization
@@ -122,17 +120,16 @@ model Article {
 }
 
 model Comment {
-    id                  Int      @id @default(autoincrement())
-    articleId           String // Foreign key to Article
-    commentId           Int      @unique
-    userId              String // Foreign key to User
-    publishedAt         DateTime @default(now())
-    editedAt            DateTime
-    content             String
-    userName            String // Redundant for performance (user's username)
-    userProfileImageUrl String // Redundant for performance (user's profile image URL)
-    parentCommentId     Int? // For nested replies (optional)
-    isDeleted           Boolean  @default(false) // Soft delete for comments
+    id              String    @id @default(cuid())
+    articleId       String // Foreign key to Article
+    userId          String // Foreign key to User
+    publishedAt     DateTime  @default(now())
+    editedAt        DateTime
+    content         String
+    userName        String // Redundant for performance (user's username)
+    userImageUrl    String // Redundant for performance (user's profile image URL)
+    parentCommentId Int? // For nested replies (optional)
+    deletedAt       DateTime? @db.Timestamptz
 
     article Article @relation("ArticleComments", fields: [articleId], references: [id], onDelete: Cascade) // Relation to Article
     user    User    @relation(fields: [userId], references: [id], onDelete: Cascade) // Relation to User

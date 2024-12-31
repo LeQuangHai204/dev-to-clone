@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 import { type Metadata } from 'next';
 
 import { TRPCReactProvider } from '~/trpc/react';
+import { HydrateClient } from '~/trpc/server';
 import { AppThemeProvider } from '~/components/theme';
 import { SidebarProvider } from '~/components/ui/sidebar';
 
@@ -17,9 +18,11 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
     <html lang='en' className={`${GeistSans.variable}`}>
         <body>
             <TRPCReactProvider>
-                <AppThemeProvider attribute='class' defaultTheme='dark'>
-                    <SidebarProvider>{children}</SidebarProvider>
-                </AppThemeProvider>
+                <HydrateClient>
+                    <AppThemeProvider attribute='class' defaultTheme='dark'>
+                        <SidebarProvider>{children}</SidebarProvider>
+                    </AppThemeProvider>
+                </HydrateClient>
             </TRPCReactProvider>
         </body>
     </html>

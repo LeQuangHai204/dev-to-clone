@@ -26,7 +26,7 @@ const NewsFeed = ({
 }) => (
     <div className='flex w-full flex-col gap-y-2'>
         {data.map((post, index) => (
-            <Card key={index} className={cn('w-full cursor-pointer bg-base-1000', className)}>
+            <Card key={index} className={cn('w-full cursor-pointer border-0 bg-base-1000', className)}>
                 <CardHeader>
                     <div className='flex items-center gap-2'>
                         <Avatar className='h-8 w-8'>
