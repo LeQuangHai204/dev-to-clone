@@ -91,7 +91,7 @@
 /* Custom parameter configuration */
 @layer base {
     :root {
-        --display-width: 1380px;
+        --display-width: 86.25rem;
         --profile-width: 62rem;
 
         --white: 0deg 0% 0%;

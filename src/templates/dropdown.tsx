@@ -10,7 +10,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
-import Icon from '~/components/icons';
+import type Icon from '~/components/icons';
 import { cn } from '~/lib/utils';
 
 const DropdownMenuWrapper = ({

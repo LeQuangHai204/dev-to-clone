@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, useEffect, useRef, useState, type ChangeEvent, type ForwardedRef } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import Markdown from 'react-markdown';
 import {
     Bold,
@@ -21,7 +21,7 @@ import { Input } from '~/components/ui/input';
 import { Textarea } from '~/components/ui/textarea';
 import { cn } from '~/lib/utils';
 
-const Editor = ({ className }: { className?: string }, ref: ForwardedRef<unknown>) => {
+const Editor = ({ className }: { className?: string }) => {
     const [title, setTitle] = useState<string>('');
     const [tags, setTags] = useState<string[]>([]);
     const [content, setContent] = useState<string>('');
@@ -177,4 +177,4 @@ const Editor = ({ className }: { className?: string }, ref: ForwardedRef<unknown
     );
 };
 
-export default forwardRef(Editor);
+export default Editor;

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Icon from '~/components/icons';
+import type Icon from '~/components/icons';
 import {
     Sidebar,
     SidebarContent,

@@ -12,8 +12,11 @@ import { me } from './constants';
 
 const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }> }) => {
     const username = await params;
+    if (username === undefined) {
+        return null;
+    }
     const {
-        id,
+        // id,
         name,
         color,
         image,
@@ -24,7 +27,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
         education,
         pronouns,
         work,
-        organizations,
+        // organizations,
     } = me;
 
     const isMe = true;
