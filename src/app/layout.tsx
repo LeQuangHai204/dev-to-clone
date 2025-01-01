@@ -5,7 +5,7 @@ import { type Metadata } from 'next';
 
 import { TRPCReactProvider } from '~/trpc/react';
 import { HydrateClient } from '~/trpc/server';
-import { AppThemeProvider } from '~/components/theme';
+import { NextThemeProvider } from '~/components/theme';
 import { SidebarProvider } from '~/components/ui/sidebar';
 
 export const metadata: Metadata = {
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
-    <html lang='en' className={`${GeistSans.variable}`}>
+    <html lang='en' className={`${GeistSans.variable}`} suppressHydrationWarning>
         <body>
             <TRPCReactProvider>
                 <HydrateClient>
-                    <AppThemeProvider attribute='class' defaultTheme='dark'>
+                    <NextThemeProvider>
                         <SidebarProvider>{children}</SidebarProvider>
-                    </AppThemeProvider>
+                    </NextThemeProvider>
                 </HydrateClient>
             </TRPCReactProvider>
         </body>

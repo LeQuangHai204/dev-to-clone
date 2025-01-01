@@ -1,6 +1,7 @@
 const colors = {
     background: 'hsl(var(--background))',
     foreground: 'hsl(var(--foreground))',
+    white: 'hsl(var(--white))',
     brand: {
         200: 'hsl(229.66deg 93.55% 81.76%)',
         400: 'hsl(242.17deg 47.43% 34.31%)',

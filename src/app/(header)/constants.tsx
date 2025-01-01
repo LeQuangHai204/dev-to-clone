@@ -111,7 +111,7 @@ const profileDropdownActions = [
     [
         {
             title: 'Sign Out',
-            url: '/signout',
+            url: '/api/auth/signout',
         },
     ],
 ];

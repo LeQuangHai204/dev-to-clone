@@ -87,7 +87,7 @@ const Content = ({
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
-            <NewsFeed data={data} />
+            <NewsFeed data={data} showComments />
         </div>
     );
 };

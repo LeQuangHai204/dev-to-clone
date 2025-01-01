@@ -1,17 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'next-themes';
+import { useEffect } from 'react';
 
-export function AppThemeProvider({ children, ...props }: React.ComponentProps<typeof ThemeProvider>) {
-    const [mounted, setMounted] = useState(false);
-
+const NextThemeProvider = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
-        setMounted(true); // Set to true once client-side render happens
+        // Remove `no-transition` class from the body after theme set
+        document.body.classList.remove('no-transition');
     }, []);
 
-    // Render without theme applied initially. after mounted, apply the theme
-    return mounted ? <ThemeProvider {...props}>{children}</ThemeProvider> : <>{children}</>;
-}
+    return (
+        <ThemeProvider
+            attribute='class'
+            defaultTheme='dark'
+            storageKey='theme' // Consistent key for storing theme in localStorage
+            enableSystem={true} // Allows system detection
+        >
+            {children}
+        </ThemeProvider>
+    );
+};
 
-export default AppThemeProvider;
+export { NextThemeProvider };

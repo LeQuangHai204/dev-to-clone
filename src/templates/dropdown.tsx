@@ -33,7 +33,7 @@ const DropdownMenuWrapper = ({
         <DropdownMenuContent className='w-64 p-2' align={contentAlign}>
             {label ? (
                 <>
-                    <DropdownMenuLabel className='hover:bg-brand-400/75 rounded-md px-4 text-foreground hover:underline'>
+                    <DropdownMenuLabel className='rounded-md px-4 text-foreground hover:bg-brand-400/75 hover:underline'>
                         {label}
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator className='my-2' />
@@ -46,9 +46,10 @@ const DropdownMenuWrapper = ({
                             <DropdownMenuItem
                                 key={itemIndex}
                                 className={cn(
-                                    'hover:bg-brand-400/75 hover:text-brand-200 flex items-center gap-2 rounded-md px-4 py-2 text-foreground',
+                                    'flex items-center gap-2 rounded-md px-4 py-2 text-foreground hover:bg-brand-400/75 hover:text-brand-200',
                                     className
                                 )}
+                                asChild
                             >
                                 {/* Modify Icon later */}
                                 {/* {Icon ? <Icon className='' /> : null} */}

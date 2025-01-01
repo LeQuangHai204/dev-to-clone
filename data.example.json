@@ -76,5 +76,27 @@
             "profile_image_90": "/uploads/user/profile_image/1339/08f5cd26-743e-4957-af23-540b7ded60d6.jpeg"
         },
         "children": []
+    },
+    {
+        "type_of": "nextauth",
+        "user": {
+            "id": "cm5cpawsl0005uhn3ti6ngpcq",
+            "name": "Lê Quang Hải",
+            "email": "lequanghai1301@gmail.com",
+            "emailVerified": null,
+            "image": "https://lh3.googleusercontent.com/a/ACg8ocJF_ZjFsT7zRQSQaFmLvE7N4IGV2pW6LdKStN_DJ7tpsniv1g=s96-c",
+            "username": null,
+            "imageUrl": null,
+            "color": "#E0A64E",
+            "biography": null,
+            "location": null,
+            "education": null,
+            "pronouns": null,
+            "work": null
+        },
+        "id": "cm5cpawxn0009uhn38vjae7hn",
+        "sessionToken": "aa0211a8-343e-4fd8-82c1-4d037c3cec29",
+        "expires": "2025-01-30T16:46:55.547Z",
+        "userId": "cm5cpawsl0005uhn3ti6ngpcq"
     }
 ]

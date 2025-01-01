@@ -43,7 +43,7 @@
     .dark {
         --background: 0 0% 0%;
         --foreground: 0 0% 98%;
-        
+
         --card: 0 0% 3.9%;
         --card-foreground: 0 0% 98%;
         --popover: 0 0% 3.9%;
@@ -93,8 +93,21 @@
     :root {
         --display-width: 1380px;
         --profile-width: 62rem;
+
+        --white: 0deg 0% 0%;
+        --base-1000: 0deg 0% 94%;
+        --base-900: 240deg 1% 84%;
+        --base-800: 0deg 0% 74%;
+        --base-700: 0deg 0% 64%;
+        --base-600: 0deg 0% 54%;
+        --base-500: 0deg 0% 44%;
+        --base-400: 0deg 0% 34%;
+        --base-300: 0deg 0% 24%;
+        --base-200: 0deg 0% 14%;
+        --base-100: 0deg 0% 9%;
     }
     .dark {
+        --white: 0deg 0% 100%;
         --base-1000: 0deg 0% 9%;
         --base-900: 0deg 0% 14%;
         --base-800: 0deg 0% 24%;

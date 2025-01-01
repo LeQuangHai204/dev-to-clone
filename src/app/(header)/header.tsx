@@ -42,19 +42,16 @@ const Header = async () => {
                             >
                                 <Avatar className='my-auto'>
                                     <AvatarImage src='https://github.com/shadnotcn.png' />
-                                    <AvatarFallback className='bg-green-500 font-medium text-white'>H</AvatarFallback>
+                                    <AvatarFallback className='bg-green-500 font-medium text-foreground'>
+                                        H
+                                    </AvatarFallback>
                                 </Avatar>
                             </DropdownMenuWrapper>
                         </>
                     ) : (
-                        <>
-                            <Button className='hover:underline' variant='type2' size='md' asChild>
-                                <Link href='/api/auth/signin'>Log In</Link>
-                            </Button>
-                            <Button variant='type1' size='md' asChild>
-                                <Link href='/api/auth/signin'> Create Account</Link>
-                            </Button>
-                        </>
+                        <Button variant='type1' size='md' asChild>
+                            <Link href='/api/auth/signin'>Log In</Link>
+                        </Button>
                     )}
                 </div>
             </div>
