@@ -1,5 +1,5 @@
 // import { auth } from '~/server/auth';
-// import { api } from '~/trpc/server';
+// import { trpc } from '~/trpc/server';
 
 import NavSidebar from '~/templates/nav-sidebar';
 import InfoSidebar from '~/templates/info-sidebar';
@@ -8,11 +8,11 @@ import { leftSidebarActions, rightSidebarData, tempNews } from './constants';
 import Content from './content';
 
 const HomePage = async () => {
-    // const hello = await api.post.hello({ text: 'from tRPC' });
+    // const hello = await trpc.post.hello({ text: 'from tRPC' });
     // const session = await auth();
 
     // if (session?.user) {
-    //     void api.post.getLatest.prefetch();
+    //     void trpc.post.getLatest.prefetch();
     // }
 
     return (
