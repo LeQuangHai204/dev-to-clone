@@ -45,7 +45,7 @@ const ProfilePage = async ({ params }: { params: Promise<{ username: string[] }>
                     <CardHeader className='mt-4'>
                         <div className='flex h-10 justify-end gap-x-2'>
                             {isMe ? (
-                                <Button className='al' variant='type6' size='md'>
+                                <Button variant='type6' size='md'>
                                     Edit Profile
                                 </Button>
                             ) : (
