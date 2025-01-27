@@ -52,10 +52,12 @@ const DropdownMenuWrapper = ({
                                 asChild
                             >
                                 {/* Modify Icon later */}
-                                {/* {Icon ? <Icon className='' /> : null} */}
-                                <Link className='w-full' href={url} passHref>
-                                    {title}
-                                </Link>
+                                <div>
+                                    {Icon ? <Icon className='' /> : null}
+                                    <Link className='w-full' href={url} passHref>
+                                        {title}
+                                    </Link>
+                                </div>
                             </DropdownMenuItem>
                         ))}
                     </DropdownMenuGroup>

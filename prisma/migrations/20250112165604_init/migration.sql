@@ -1,25 +1,50 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "Account" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "provider" TEXT NOT NULL,
+    "providerAccountId" TEXT NOT NULL,
+    "refresh_token" TEXT,
+    "access_token" TEXT,
+    "expires_at" INTEGER,
+    "token_type" TEXT,
+    "scope" TEXT,
+    "id_token" TEXT,
+    "session_state" TEXT,
+    "refresh_token_expires_in" INTEGER,
 
-  - You are about to drop the `Post` table. If the table is not empty, all the data it contains will be lost.
-  - A unique constraint covering the columns `[username]` on the table `User` will be added. If there are existing duplicate values, this will fail.
+    CONSTRAINT "Account_pkey" PRIMARY KEY ("id")
+);
 
-*/
--- DropForeignKey
-ALTER TABLE "Post" DROP CONSTRAINT "Post_createdById_fkey";
+-- CreateTable
+CREATE TABLE "Session" (
+    "id" TEXT NOT NULL,
+    "sessionToken" TEXT NOT NULL,
+    "expires" TIMESTAMP(3) NOT NULL,
+    "userId" TEXT NOT NULL,
 
--- AlterTable
-ALTER TABLE "User" ADD COLUMN     "biography" TEXT,
-ADD COLUMN     "color" TEXT DEFAULT '#E0A64E',
-ADD COLUMN     "education" TEXT,
-ADD COLUMN     "imageUrl" TEXT,
-ADD COLUMN     "location" TEXT,
-ADD COLUMN     "pronouns" TEXT,
-ADD COLUMN     "username" TEXT,
-ADD COLUMN     "work" TEXT;
+    CONSTRAINT "Session_pkey" PRIMARY KEY ("id")
+);
 
--- DropTable
-DROP TABLE "Post";
+-- CreateTable
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL,
+    "name" TEXT,
+    "email" TEXT,
+    "emailVerified" TIMESTAMP(3),
+    "image" TEXT,
+    "username" TEXT,
+    "imageUrl" TEXT,
+    "color" TEXT DEFAULT '#E0A64E',
+    "biography" TEXT,
+    "location" TEXT,
+    "education" TEXT,
+    "pronouns" TEXT,
+    "work" TEXT,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "Organization" (
@@ -34,21 +59,28 @@ CREATE TABLE "Organization" (
 );
 
 -- CreateTable
+CREATE TABLE "VerificationToken" (
+    "identifier" TEXT NOT NULL,
+    "token" TEXT NOT NULL,
+    "expires" TIMESTAMP(3) NOT NULL
+);
+
+-- CreateTable
 CREATE TABLE "Article" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "path" TEXT NOT NULL,
+    "path" TEXT,
     "userId" TEXT NOT NULL,
     "organizationId" TEXT,
     "commentsCount" INTEGER NOT NULL DEFAULT 0,
     "reactionsCount" INTEGER NOT NULL DEFAULT 0,
     "publishedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "editedAt" TIMESTAMP(3) NOT NULL,
-    "userName" TEXT NOT NULL,
-    "userImageUrl" TEXT NOT NULL,
+    "editedAt" TIMESTAMP(3),
+    "userName" TEXT,
+    "userImageUrl" TEXT,
     "organizationName" TEXT,
     "organizationImageUrl" TEXT,
-    "imageUrl" TEXT NOT NULL,
+    "imageUrl" TEXT,
     "tagList" TEXT[],
     "content" TEXT NOT NULL,
 
@@ -78,6 +110,24 @@ CREATE TABLE "_UserOrganizations" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Article_path_key" ON "Article"("path");
 
 -- CreateIndex
@@ -95,8 +145,11 @@ CREATE UNIQUE INDEX "_UserOrganizations_AB_unique" ON "_UserOrganizations"("A", 
 -- CreateIndex
 CREATE INDEX "_UserOrganizations_B_index" ON "_UserOrganizations"("B");
 
--- CreateIndex
-CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
+-- AddForeignKey
+ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Article" ADD CONSTRAINT "Article_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

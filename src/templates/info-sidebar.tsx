@@ -10,12 +10,45 @@ import {
     SidebarMenuButton,
 } from '~/components/ui/sidebar';
 
+const fakeData = [
+    {
+        title: 'Active discussions',
+        items: [
+            {
+                title: 'Mastering JavaScript: Unleash the Power of Functional Reactive Programming with Higher-Order Streams',
+                commentCount: 3,
+                url: '#',
+            },
+            {
+                title: 'Creating a TypeScript CLI for Your Monorepo',
+                commentCount: 7,
+                url: '#',
+            },
+        ],
+    },
+    {
+        title: 'Active discussions',
+        items: [
+            {
+                title: 'Mastering JavaScript: Unleash the Power of Functional Reactive Programming with Higher-Order Streams',
+                commentCount: 3,
+                url: '#',
+            },
+            {
+                title: 'Creating a TypeScript CLI for Your Monorepo',
+                commentCount: 7,
+                url: '#',
+            },
+        ],
+    },
+];
+
 const InfoSidebar = ({
     className,
-    data,
+    data = fakeData,
 }: {
     className?: string;
-    data: {
+    data?: {
         title?: string;
         items: {
             title?: string;

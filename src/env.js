@@ -1,7 +1,7 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
 
-export const env = createEnv({
+const env = createEnv({
     /**
      * Specify your server-side environment variables schema here. This way you can ensure the app
      * isn't built with invalid env vars.
@@ -13,6 +13,11 @@ export const env = createEnv({
         AUTH_GOOGLE_ID: z.string(),
         AUTH_GOOGLE_SECRET: z.string(),
         DATABASE_URL: z.string().url(),
+
+        AWS_KEY_ID: z.string(),
+        AWS_SECRET_ACCESS_KEY: z.string(),
+        AWS_S3_BUCKET_NAME: z.string(),
+
         NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     },
 
@@ -36,6 +41,11 @@ export const env = createEnv({
         AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
         AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
         DATABASE_URL: process.env.DATABASE_URL,
+
+        AWS_KEY_ID: process.env.AWS_KEY_ID,
+        AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+        AWS_S3_BUCKET_NAME: process.env.AWS_S3_BUCKET_NAME,
+
         NODE_ENV: process.env.NODE_ENV,
     },
     /**
@@ -49,3 +59,5 @@ export const env = createEnv({
      */
     emptyStringAsUndefined: true,
 });
+
+export default env;

@@ -81,7 +81,7 @@
 /* Project set up */
 @layer base {
     * {
-        @apply border-border;
+        @apply box-border border-base-900
     }
     body {
         @apply bg-background text-foreground;
@@ -116,7 +116,7 @@
         --base-500: 0deg 0% 54%;
         --base-400: 0deg 0% 64%;
         --base-300: 0deg 0% 74%;
-        --base-200: 240deg 1% 84%;
+        --base-200: 240deg 0% 84%;
         --base-100: 0deg 0% 94%;
     }
 }
@@ -124,5 +124,7 @@
 @layer components {
     .prose {
         color: inherit;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 }

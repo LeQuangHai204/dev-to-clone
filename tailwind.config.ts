@@ -10,7 +10,7 @@ export default {
         extend: {
             colors,
             textColor: {
-                DEFAULT: 'hsl(var(--foreground))', // Define your global default color
+                DEFAULT: 'hsl(var(--foreground))',
             },
             fontFamily: {
                 init: ['var(--font-geist-sans)', ...fontFamily.sans],

@@ -2,7 +2,7 @@ import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
 
-export default function SearchBar({
+const SearchBar = ({
     className,
     placeholder = 'Search...',
     areaLabel,
@@ -14,7 +14,7 @@ export default function SearchBar({
     areaLabel?: string;
     LeftIcon?: React.ComponentType;
     RightIcon?: React.ComponentType;
-}) {
+}) => {
     return (
         <div
             className={cn(
@@ -41,4 +41,6 @@ export default function SearchBar({
             ) : null}
         </div>
     );
-}
+};
+
+export default SearchBar;

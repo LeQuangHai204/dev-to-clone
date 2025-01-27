@@ -6,7 +6,7 @@ type Icon = React.FC<{
 }>;
 
 const BookmarkIcon: Icon = ({ className, size = '1.4rem' }) => (
-    <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 22 22'>
+    <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
         <path d='M6.75 4.5h10.5a.75.75 0 01.75.75v14.357a.375.375 0 01-.575.318L12 16.523l-5.426 3.401A.375.375 0 016 19.607V5.25a.75.75 0 01.75-.75zM16.5 6h-9v11.574l4.5-2.82 4.5 2.82V6z' />
     </svg>
 );
@@ -23,7 +23,7 @@ const SearchIcon: Icon = ({ className, size = '1.4rem' }) => (
     </svg>
 );
 
-const MeatballsMenuIcon: Icon = ({ className, size = '1.4rem' }) => (
+const MeatballsMenuIcon: Icon = ({ className, size = '1.5rem' }) => (
     <svg
         className={className}
         width={size}
@@ -37,7 +37,7 @@ const MeatballsMenuIcon: Icon = ({ className, size = '1.4rem' }) => (
     </svg>
 );
 
-const HomeIcon: Icon = ({ className, size = '1.4rem' }) => (
+const HomeIcon: Icon = ({ className, size = '1.3rem' }) => (
     <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 36 36'>
         <path
             fill='#A0041E'
@@ -192,6 +192,18 @@ const RedirectIcon: Icon = ({ className, size = '1.4rem' }) => (
     </svg>
 );
 
+const LovePlusIcon: Icon = ({ className, size = '1.5rem' }) => (
+    <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
+        <path d='M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z' />
+    </svg>
+);
+
+const CommentIcon: Icon = ({ className, size = '1.5rem' }) => (
+    <svg className={className} width={size} height={size} fill='currentColor' viewBox='0 0 24 24'>
+        <path d='M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z'></path>
+    </svg>
+);
+
 export default Icon;
 export {
     BellIcon,
@@ -208,4 +220,6 @@ export {
     LocationIcon,
     CakeIcon,
     RedirectIcon,
+    LovePlusIcon,
+    CommentIcon,
 };

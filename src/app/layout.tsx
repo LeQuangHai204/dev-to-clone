@@ -3,10 +3,12 @@ import '~/styles/globals.css';
 import { GeistSans } from 'geist/font/sans';
 import { type Metadata } from 'next';
 
-import { TRPCReactProvider } from '~/trpc/react';
+import { TRPCReactProvider } from '~/trpc/client';
 import { HydrateClient } from '~/trpc/server';
-import { NextThemeProvider } from '~/components/theme';
+import { SessionProvider } from 'next-auth/react';
+
 import { SidebarProvider } from '~/components/ui/sidebar';
+import { NextThemeProvider } from '~/components/context/theme';
 
 export const metadata: Metadata = {
     title: 'Create T3 App',
@@ -16,11 +18,13 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
     <html lang='en' className={`${GeistSans.variable}`} suppressHydrationWarning>
-        <body>
+        <body className='hidden sm:block'>
             <TRPCReactProvider>
                 <HydrateClient>
                     <NextThemeProvider>
-                        <SidebarProvider>{children}</SidebarProvider>
+                        <SessionProvider>
+                            <SidebarProvider>{children}</SidebarProvider>
+                        </SessionProvider>
                     </NextThemeProvider>
                 </HydrateClient>
             </TRPCReactProvider>

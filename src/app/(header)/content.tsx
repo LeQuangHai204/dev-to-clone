@@ -1,11 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-import NewsFeed from '~/templates/newsfeed';
-import SearchBar from '~/templates/searchbar';
 import { Button } from '~/components/ui/button';
 import { MeatballsMenuIcon } from '~/components/icons';
-
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -16,22 +13,13 @@ import {
     DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 
-const Content = ({
-    className,
-    data,
-}: {
-    className?: string;
-    data: {
-        title: string;
-        comments_count: number;
-        reactions_count: number;
-        top_comments: {
-            name: string;
-            profile_image?: string;
-        }[];
-    }[];
-}) => {
+import NewsFeed from '~/templates/newsfeed';
+import SearchBar from '~/templates/searchbar';
+import { trpc } from '~/trpc/client';
+
+const Content = ({ className }: { className?: string }) => {
     const [activeButton, setActiveButton] = useState<'discover' | 'following'>('discover');
+    const data = trpc.article.getLatest.useQuery().data?.data?.articles ?? [];
 
     return (
         <div className={className}>
@@ -57,7 +45,7 @@ const Content = ({
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button className='text-base-200 hover:text-foreground' size='icon'>
+                        <Button className='text-base-200 hover:bg-base-1000 hover:text-foreground' size='icon'>
                             <MeatballsMenuIcon />
                         </Button>
                     </DropdownMenuTrigger>
@@ -67,27 +55,27 @@ const Content = ({
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator className='m-1 bg-base-800 pt-px' />
                         <DropdownMenuGroup>
-                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-brand-700'>
                                 Top this Week
                             </DropdownMenuItem>
-                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-brand-700'>
                                 Top this Month
                             </DropdownMenuItem>
-                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-brand-700'>
                                 Top this Year
                             </DropdownMenuItem>
-                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
+                            <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-brand-700'>
                                 Top this Infinity
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator className='m-1 bg-base-800 pt-px' />
-                        <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-base-1000 hover:text-brand-700'>
+                        <DropdownMenuItem className='text-bright-foreground rounded-md p-2 font-normal hover:bg-background hover:text-brand-700'>
                             Latest
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
-            <NewsFeed data={data} showComments />
+            <NewsFeed data={data} showCommentsByDefault />
         </div>
     );
 };
