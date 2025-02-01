@@ -1,5 +1,5 @@
 import Logo from '~/components/logo';
-import Editor from './editor';
+import { Editor } from '~/components/editor';
 
 const ComposePage = () => {
     return (

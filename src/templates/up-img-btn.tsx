@@ -1,24 +1,26 @@
-import { useId } from 'react';
-
+import { useRef } from 'react';
 import { Button, type ButtonProps } from '~/components/ui/button';
-import { Input } from '~/components/ui/input';
+import { Input, type InputProps } from '~/components/ui/input';
 
-const UploadImageButton = ({ className, children, variant = 'type0', onChange, ...props }: ButtonProps) => {
-    const uniqueId = useId();
+const UploadImageButton = ({
+    className,
+    children,
+    variant = 'type0',
+    onInputChange,
+    multiple = false,
+    ...props
+}: ButtonProps & { onInputChange: InputProps['onChange']; multiple?: InputProps['multiple'] }) => {
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     return (
-        <Button
-            className={className}
-            variant={variant}
-            onClick={() => document.getElementById(uniqueId)?.click()}
-            {...props}
-        >
+        <Button className={className} variant={variant} onClick={() => fileInputRef.current?.click()} {...props}>
             <Input
-                id={uniqueId}
+                ref={fileInputRef}
                 type='file'
                 accept='image/*'
                 className='hidden'
-                onChange={onChange as React.ChangeEventHandler<HTMLInputElement>}
+                onChange={onInputChange}
+                multiple={multiple}
             />
             {children}
         </Button>

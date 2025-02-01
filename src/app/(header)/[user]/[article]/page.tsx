@@ -3,10 +3,12 @@ import Image from 'next/image';
 
 import InfoSidebar from '~/templates/info-sidebar';
 import MarkdownWrapper from '~/components/markdown';
-import { Author, TagList } from '~/components/article';
+import { Button } from '~/components/ui/button';
+import { Author, CommentList, TagList } from '~/components/article';
 import { trpc } from '~/trpc/server';
 
 import InteractionPanel from './interaction-panel';
+import CommentBox from './comment-box';
 
 const ArticlePage = async ({ params }: { params: Promise<{ user: string; article: string }> }) => {
     const { article } = await params;
@@ -15,6 +17,9 @@ const ArticlePage = async ({ params }: { params: Promise<{ user: string; article
     if (!payload.success || !data) notFound();
     const imageUrl =
         data.imageUrl ?? 'https://dev-to-clone-bucket.s3.us-east-1.amazonaws.com/Chrysanthemum-1736473494567.jpg';
+
+    // const handleReact = () => {};
+    // const handleComment = () => {};
 
     return (
         <div className='mb-4 flex h-fit w-full gap-4'>
@@ -37,7 +42,15 @@ const ArticlePage = async ({ params }: { params: Promise<{ user: string; article
                     <Author data={data} />
                     <h1 className='my-4 text-5xl font-extrabold'>{data.title}</h1>
                     <TagList data={data.tagList} />
-                    <MarkdownWrapper className='prose my-4'>{data.content}</MarkdownWrapper>
+                    <MarkdownWrapper className='prose my-8'>{data.content}</MarkdownWrapper>
+                    <div className='my-4 flex justify-between'>
+                        <span className='my-auto text-xl font-bold'>Top comments</span>
+                        <Button className='px-4 py-1' variant='type10'>
+                            Subscribe
+                        </Button>
+                    </div>
+                    <CommentBox />
+                    <CommentList data={[]} />
                 </div>
             </div>
             {/* Placeholder for additional content */}

@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
@@ -37,47 +37,115 @@ import { type ImageFile } from '~/lib/types/image-file';
  *  - Preview text overflow
  */
 
+const Toolbar = ({
+    className,
+    size = 6,
+    setImages,
+    setContent,
+}: {
+    className?: string;
+    size?: number;
+    setImages: React.Dispatch<React.SetStateAction<ImageFile[]>>;
+    setContent: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+    console.log('Toolbar is rendered');
+
+    // Helper function to insert text at cursor or append
+    const insertTextAtCursor = (beforeText = '', afterText = '') => {
+        setContent((content) => `${content}${beforeText}${afterText}`);
+    };
+
+    const handleUpload = (ev: React.ChangeEvent<HTMLInputElement>) => {
+        const files = ev.target.files;
+        if (!files) return;
+        Array.from(files).forEach((file) => {
+            const previewUrl = URL.createObjectURL(file);
+            setImages((images) => [...images, { file, previewUrl }]);
+            setContent((content) => content + '![Image description](' + previewUrl + ')');
+        });
+    };
+
+    // Define toolbar actions
+    const tools = [
+        { icon: Bold, label: 'Bold', action: () => insertTextAtCursor('**', '**') },
+        { icon: Italic, label: 'Italic', action: () => insertTextAtCursor('*', '*') },
+        { icon: Link, label: 'Link', action: () => insertTextAtCursor('[', '](url)') },
+        { icon: List, label: 'Bullet list', action: () => insertTextAtCursor('\n- ') },
+        { icon: ListOrdered, label: 'Numbered list', action: () => insertTextAtCursor('\n1. ') },
+        { icon: Heading, label: 'Heading', action: () => insertTextAtCursor('\n# ') },
+        { icon: Quote, label: 'Quote', action: () => insertTextAtCursor('\n> ') },
+        { icon: Code, label: 'Code', action: () => insertTextAtCursor('\n```\n', '\n```') },
+        { icon: Square, label: 'Checkbox', action: () => insertTextAtCursor('\n- [ ] ') },
+        { icon: Zap, label: 'Highlight', action: () => insertTextAtCursor('==', '==') },
+    ];
+
+    return (
+        <div className={cn('flex items-center gap-1', className)}>
+            {tools.map((tool, index) => (
+                <Button
+                    key={index}
+                    size='icon'
+                    className='h-10 text-base-200'
+                    variant='type2'
+                    onClick={tool.action}
+                    title={tool.label}
+                >
+                    <tool.icon className={`h-${size} w-${size}`} strokeWidth='2' />
+                </Button>
+            ))}
+            <UploadImageButton
+                size='icon'
+                className='h-10 text-base-200'
+                variant='type2'
+                onInputChange={handleUpload}
+                title='Upload Image'
+                multiple
+            >
+                <ImageIcon className={`h-${size} w-${size}`} strokeWidth='2' />
+            </UploadImageButton>
+        </div>
+    );
+};
+
 const Editor = ({ className }: { className?: string }) => {
     const router = useRouter();
     const session = useSession();
     const publishArticle = trpc.article.publish.useMutation();
     const getS3ImageUploadUrl = trpc.image.getS3UploadUrl.useMutation();
-    const images = useRef<ImageFile[]>([]);
 
     const [coverImage, setCoverImage] = useState<ImageFile | null>(null);
     const [title, setTitle] = useState<string>('Title');
+    const [images, setImages] = useState<ImageFile[]>([]);
     const [tags, setTags] = useState<string[]>(['tag1', 'tag2', 'tag3', 'tag4']);
     const [selectedTag, setSelectedTag] = useState<number | null>(null);
     const [content, setContent] = useState<string>(
-        'tailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/thytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/indcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographtypographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/indcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typography'
+        'tailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/thytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/indcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/indcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/indcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typographytailwindcss/typography'
     );
     const [isPreview, setIsPreview] = useState<boolean>(false);
 
     // Clear existing images leaving page
-    useEffect(() => () => images.current.forEach((image) => URL.revokeObjectURL(image.previewUrl)), []);
+    useEffect(() => {
+        return () => {
+            setImages((images) => {
+                images.forEach((image) => URL.revokeObjectURL(image.previewUrl));
+                return [];
+            });
+        };
+    }, []);
 
     // Clear existing image when selected a new one
     useEffect(() => {
         return () => {
-            if (coverImage) URL.revokeObjectURL(coverImage.previewUrl);
+            if (coverImage) {
+                URL.revokeObjectURL(coverImage.previewUrl);
+            }
         };
     }, [coverImage]);
 
-    const handleCoverImage = (ev: React.FormEvent<HTMLButtonElement>) => {
-        const file = (ev as React.ChangeEvent<HTMLInputElement>).target.files?.item(0);
+    const handleCoverImage = (ev: React.ChangeEvent<HTMLInputElement>) => {
+        const file = ev.target.files?.item(0);
         if (!file) return;
-        setCoverImage({
-            file,
-            previewUrl: URL.createObjectURL(file),
-        });
-    };
-
-    const handleContentImage = (ev: React.FormEvent<HTMLButtonElement>) => {
-        const file = (ev as React.ChangeEvent<HTMLInputElement>).target.files?.item(0);
-        if (!file) return;
-        const previewUrl = URL.createObjectURL(file);
-        images.current.push({ file, previewUrl });
-        setContent(content + '![Image description](' + previewUrl + ')');
+        setCoverImage({ file, previewUrl: URL.createObjectURL(file) });
     };
 
     const handleTextChange = (
@@ -106,7 +174,7 @@ const Editor = ({ className }: { className?: string }) => {
         const signedUrls: string[] = [];
         let updatedContent = content;
         try {
-            const uploadImagePromises = images.current
+            const uploadImagePromises = images
                 .filter((image) => content.includes('![Image description](' + image.previewUrl + ')'))
                 .map(async (image) => {
                     const signedUrl = await getS3ImageUploadUrl.mutateAsync({
@@ -218,7 +286,7 @@ const Editor = ({ className }: { className?: string }) => {
                                 </Button>
                             </>
                         ) : null}
-                        <UploadImageButton className='h-10 px-4 py-3' variant='type10' onChange={handleCoverImage}>
+                        <UploadImageButton className='h-10 px-4 py-3' variant='type10' onInputChange={handleCoverImage}>
                             Set cover image
                         </UploadImageButton>
                         {/* Title Input */}
@@ -271,8 +339,7 @@ const Editor = ({ className }: { className?: string }) => {
                         </div>
                     </div>
                     {/* Toolbar */}
-                    <div className='flex items-center gap-1 border-x border-base-1000 bg-background px-12 py-2'>
-                        {/* Map icons dynamically based on the icon names */}
+                    {/* <div className='flex items-center gap-1 border-x border-base-1000 bg-background px-12 py-2'>
                         {[Bold, Italic, Link, ListOrdered, List, Heading, Quote, Code, Square, Zap].map(
                             (Icon, index) => {
                                 return (
@@ -290,7 +357,12 @@ const Editor = ({ className }: { className?: string }) => {
                         >
                             <ImageIcon className='h-6 w-6' strokeWidth='2' />
                         </UploadImageButton>
-                    </div>
+                    </div> */}
+                    <Toolbar
+                        className='border-x border-base-1000 bg-background px-12 py-2'
+                        setContent={setContent}
+                        setImages={setImages}
+                    />
                     {/* Content Area */}
                     <div className='w-full grow bg-base-900'>
                         <Textarea
@@ -325,4 +397,4 @@ const Editor = ({ className }: { className?: string }) => {
     );
 };
 
-export default Editor;
+export { Toolbar, Editor };
