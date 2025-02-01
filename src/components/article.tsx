@@ -14,7 +14,7 @@ const fakeComments = [
     {
         id: '1',
         articleId: '101',
-        userId: 'u001',
+        userId: 'user-001',
         publishedAt: new Date('2025-01-27T12:00:00Z'),
         editedAt: null,
         content: 'This is the first comment.',
@@ -26,7 +26,7 @@ const fakeComments = [
     {
         id: '2',
         articleId: '101',
-        userId: 'u002',
+        userId: 'user-002',
         publishedAt: new Date('2025-01-27T12:30:00Z'),
         editedAt: new Date('2025-01-27T12:45:00Z'),
         content: 'This is a reply to the first comment.',
@@ -102,7 +102,7 @@ const CommentList = ({ className, data }: { className?: string; data: Comment[] 
                     <div className='flex-1 rounded-md bg-base-900 px-4 py-3'>
                         <div className='flex items-center space-x-2'>
                             <Link href='#' className='font-medium text-base-300 hover:text-blue-400'>
-                                {comment.content}
+                                {comment.userId}
                             </Link>
                             <span className='mt-px text-xs text-base-400'>
                                 {new Date(comment.publishedAt).toLocaleDateString('en-US', {
@@ -112,7 +112,7 @@ const CommentList = ({ className, data }: { className?: string; data: Comment[] 
                                 })}
                             </span>
                         </div>
-                        <p className='mt-px text-base-200'>useful</p>
+                        <p className='mt-px text-base-200'>{comment.content}</p>
                     </div>
                 </div>
             ))}
