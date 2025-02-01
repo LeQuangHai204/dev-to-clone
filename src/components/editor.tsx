@@ -24,7 +24,7 @@ import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
 import { Textarea } from '~/components/ui/textarea';
 import UploadImageButton from '~/templates/up-img-btn';
-import MarkdownWrapper from '~/components/markdown';
+import { MarkdownWrapper } from '~/components/markdown';
 
 import { cn } from '~/lib/utils';
 import { trpc } from '~/trpc/client';
@@ -171,6 +171,7 @@ const Editor = ({ className }: { className?: string }) => {
     };
 
     const handlePublish = async () => {
+        if (!content.trim()) return;
         const signedUrls: string[] = [];
         let updatedContent = content;
         try {

@@ -4,4 +4,4 @@ const MarkdownWrapper = ({ className, children }: { className?: string; children
     return <Markdown className={className}>{children}</Markdown>;
 };
 
-export default MarkdownWrapper;
+export { MarkdownWrapper };

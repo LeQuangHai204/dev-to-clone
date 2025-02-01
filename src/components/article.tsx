@@ -163,14 +163,16 @@ const ArticleCard = ({
                 </div>
                 {showComments ? <CommentList className='w-full' data={[]} /> : null}
                 {commentsCount > 0 ? (
-                    <Button
-                        className='text-sm'
-                        variant='type8'
-                        size='sm'
-                        onClick={() => setShowComments(!showComments)}
-                    >
-                        {showComments ? 'Hide comments' : 'See all 5 comments'}
-                    </Button>
+                    <div className='w-full'>
+                        <Button
+                            className='text-sm'
+                            variant='type8'
+                            size='sm'
+                            onClick={() => setShowComments(!showComments)}
+                        >
+                            {showComments ? 'Hide comments' : 'See all comments'}
+                        </Button>
+                    </div>
                 ) : null}
             </CardFooter>
         </Card>

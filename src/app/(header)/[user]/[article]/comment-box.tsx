@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+import { MarkdownWrapper } from '~/components/markdown';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { Textarea } from '~/components/ui/textarea';
 import { Toolbar } from '~/components/editor';
@@ -8,11 +9,15 @@ import { Button } from '~/components/ui/button';
 
 import type { ImageFile } from '~/lib/types/image-file';
 import { trpc } from '~/trpc/client';
+import { useRouter } from 'next/navigation';
 
-const CommentBox = () => {
+const CommentBox = ({ articleId }: { articleId: string }) => {
     const [content, setContent] = useState<string>('');
     const [images, setImages] = useState<ImageFile[]>([]);
+    const [isPreview, setIsPreview] = useState<boolean>(false);
     const getS3ImageUploadUrl = trpc.image.getS3UploadUrl.useMutation();
+    const publishComment = trpc.comment.publish.useMutation();
+    const router = useRouter();
 
     // Clear existing images leaving page
     useEffect(() => {
@@ -32,6 +37,7 @@ const CommentBox = () => {
     };
 
     const handlePublish = async () => {
+        if (!content.trim()) return;
         const signedUrls: string[] = [];
         let updatedContent = content;
         try {
@@ -58,6 +64,12 @@ const CommentBox = () => {
 
             // Wait for all image upload promises to resolve
             await Promise.all(uploadImagePromises);
+
+            // Publish the comment to database
+            await publishComment.mutateAsync({ content, articleId });
+
+            // Refresh the page
+            router.refresh();
         } catch {
             alert('error');
             await Promise.all(
@@ -75,21 +87,30 @@ const CommentBox = () => {
                 <AvatarFallback className='bg-orange-500'>IK</AvatarFallback>
             </Avatar>
             <div className='w-full space-y-2'>
-                <div className='rounded-lg bg-background focus-within:border focus-within:border-brand-800'>
-                    <Textarea
-                        className='p-4 text-base placeholder:text-base-600'
-                        value={content}
-                        onChange={handleTextChange}
-                        placeholder='Write something here...'
-                    />
+                <div className='rounded-lg bg-background text-base focus-within:border focus-within:border-brand-800'>
+                    {isPreview ? (
+                        <MarkdownWrapper className='p-4'>{content}</MarkdownWrapper>
+                    ) : (
+                        <Textarea
+                            className='p-4 placeholder:text-base-600'
+                            value={content}
+                            onChange={handleTextChange}
+                            placeholder='Write something here...'
+                        />
+                    )}
                     <Toolbar className='mx-2' size={4} setContent={setContent} setImages={setImages} />
                 </div>
                 <div className='space-x-2'>
                     <Button className='text-base font-medium' variant='type6' size='md' onClick={handlePublish}>
                         Submit
                     </Button>
-                    <Button className='text-base font-medium' variant='type7' size='md'>
-                        Preview
+                    <Button
+                        className='text-base font-medium'
+                        variant='type7'
+                        size='md'
+                        onClick={() => setIsPreview((isPreview) => !isPreview)}
+                    >
+                        {isPreview ? 'Edit' : 'Preview'}
                     </Button>
                 </div>
             </div>
